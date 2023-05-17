@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
-  get 'homes/top'
+  
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
-  
-  
-  
-  
-  
-  
-  
-  
   
   devise_for :customers, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  namespace :admin do
+    get "/"=>"homes#top"
+    resources :items ,only: [:index,:new,:create,:show,:edit,:update]
+    resources :genres ,only: [:index,:create,:edit,:update]
+    resources :customers ,only: [:index,:show,:edit,:update]
+    resources :orders ,only: [:show,:update]
+    resources :order_details ,only: [:update]
+  end
 
   scope module: :public do
     root to: "homes#top"
