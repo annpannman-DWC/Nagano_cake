@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  get 'homes/top'
+  
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
+
+
+  devise_for :customers, controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+  
   namespace :admin do
     get "/"=>"homes#top"
     resources :items ,only: [:index,:new,:create,:show,:edit,:update]
@@ -11,11 +18,6 @@ Rails.application.routes.draw do
     resources :orders ,only: [:show,:update]
     resources :order_details ,only: [:update]
   end
-
-  devise_for :customers, controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
 
   root to: "homes#top"
 
