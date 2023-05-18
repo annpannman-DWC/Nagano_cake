@@ -13,23 +13,23 @@
 
         <tr>
           <th>商品説明</th>
-          <th><%= @item.introduction %></th>
+          <th><%= @item.caption %></th>
         </tr>
 
         <tr>
           <th>ジャンル</th>
-          <th><%= @item.category.name %></th>
+          <th><%= @item.genre.name %></th>
         </tr>
 
         <tr>
           <th>税込み価格（税抜き価格）</th>
-          <th><%= ((@item.price_without_tax * 1.1).floor).to_s(:delimited, delimiter: ',') %> (<%= @item.price_without_tax.to_s(:delimited, delimiter: ',') %>)円</th>
+          <th><%= ((@item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %> (<%= @item.price.to_s(:delimited, delimiter: ',') %>)円</th>
         </tr>
 
         <tr>
           <th>販売ステータス</th>
           <th>
-            <% if @item.sale_status == true %>
+            <% if @item.is_active == true %>
               "販売中"
             <% else %>
               "売り切れ"

@@ -11,7 +11,8 @@ class Admin::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    if @item.save
+    @item.genre_id = @item.genre.id
+    if @item.save!
       flash[:notice] = "#{@item.name}を追加しました"
       redirect_to admin_item_path(@item)
     else
@@ -22,11 +23,11 @@ class Admin::ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-  end 
+  end
   
   def edit
     @item = Item.find(params[:id])
-  end 
+  end
   
   def update
     @item = Item.find(params[:id])
@@ -37,12 +38,11 @@ class Admin::ItemsController < ApplicationController
       flash[:alert] = "ジャンル名を入力してください"
       redirect_to edit_admin_item_path(@item)
     end
-  end 
+  end
   
   private
 
   def item_params
     params.require(:item).permit(:name, :image, :caption, :price, :is_active, :genre_id)
   end
-  
 end
