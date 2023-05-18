@@ -16,7 +16,7 @@
   <tbody>
     <tr>
       <td><%= genre.name %></td>
-      <td><%= link_to "編集する", edit_admin_genre(genre.id), class: "btn btn-sm btn-danger" %></td>
+      <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
     </tr>
   </tbody>
   <% end %>
