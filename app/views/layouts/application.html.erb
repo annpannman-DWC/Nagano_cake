@@ -69,17 +69,24 @@
               </li>
             <% else %>
               <li class="m-2">
-
-                <button>About</button>
+                <%= link_to about_path do %>
+                  <button type="button" class="btn btn-outline-dark">About</button>
+                <% end %>
               </li>
               <li class="m-2">
-                <button>商品一覧</button>
+                <%= link_to items_path do %>
+                  <button type="button" class="btn btn-outline-dark">商品一覧</button>
+                <% end %>
               </li>
               <li class="m-2">
-                <button>新規登録</button>
+                <%= link_to new_customer_registration_path do %>
+                  <button type="button" class="btn btn-outline-dark">新規登録</button>
+                <% end %>
               </li>
               <li class="m-2">
-                <button>ログイン</button>
+                <%= link_to new_customer_session_path do %>
+                  <button type="button" class="btn btn-outline-dark">ログイン</button>
+                <% end %>
               </li>
             <% end %>
             </ul>
