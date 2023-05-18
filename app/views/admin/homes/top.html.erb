@@ -1,27 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nagoya cake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+    <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+    
+  </head>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-10 px-sm-0 mx-auto">
-      <h2>注文履歴一覧</h2>
-
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th class="table-active">購入日時</th>
-            <th class="table-active">購入者</th>
-            <th class="table-active">注文個数</th>
-            <th class="table-active">注文ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="link">
-            
-            </td>
-          </tr>
-        </tbody>
-     </div>
-  </div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 px-sm-0 mx-auto">
+        <header class="header">
+            <nav class="navbar">
+              <div class="container">
+                <div class="navbar-brand">
+                  <a href="#" class="border border-primary p-1 rounded">logo</a>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                   <a href="#" class="border border-primary p-1 rounded">商品一覧</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="border border-primary p-1 rounded">会員一覧</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="border border-primary p-1 rounded">注文履歴一覧</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="border border-primary p-1 rounded">ジャンル一覧</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="border border-primary p-1 rounded">ログアウト</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+              
+            <div class="er-dummy-search-box" aria-label="Search Box">
+                <div class="er-search-form" role="form">
+                      <button type="button" title="" tabindex="0" class="er_search_button_back" aria-label="Back">
+                          <i class="fa fa-arrow-left"></i>
+                      </button>
+                      <input type="text" title="Search" tabindex="0" name="" aria-label="search input" role="searchbox" class="er_search_input_dummy" placeholder="Search Expertrec" autocomplete="off">
+                        <button role="button" aria-label="search by voice" type="voice" class="er_voice_search_dummy">
+                        <i class="fa fa-microphone"></i>
+                        </button>
+                    <button type="button" title="Search" tabindex="0" class="er_search_button_dummy" aria-label="Search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+          </header>
           
-            
+        <h2>注文履歴一覧</h2>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="table-active">購入日時</th>
+              <th class="table-active">購入者</th>
+              <th class="table-active">注文個数</th>
+              <th class="table-active">注文ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="link">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+    </div>
+  </div>
+</html>
