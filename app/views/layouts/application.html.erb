@@ -47,7 +47,7 @@
                 <button>カート</button>
               </li>
               <li>
-                <button>ログアウト</button>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
               </li>
             <% else %>
               <li>
