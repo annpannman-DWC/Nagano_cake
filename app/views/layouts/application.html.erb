@@ -12,49 +12,61 @@
 
   <body>
     <header>
-      <% if admin_signed_in? %>
-        <li>
-          商品一覧
-        </li>
-        <li>
-          会員一覧
-        </li>
-        <li>
-          注文履歴一覧
-        </li>
-        <li>
-          ジャンル一覧
-        </li>
-        <li>
-          ログアウト
-        </li>
-      <% elsif customer_signed_in? %>
-        <li>
-          マイページ
-        </li>
-        <li>
-          商品一覧
-        </li>
-        <li>
-          カート
-        </li>
-        <li>
-          ログアウト
-        </li>
-      <% else %>
-        <li>
-          About
-        </li>
-        <li>
-          商品一覧
-        </li>
-        <li>
-          新規登録
-        </li>
-        <li>
-          ログイン
-        </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+          <a class="navbar_brand" href="/">LOGO</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <li>
+                <button>商品一覧</button>
+              </li>
+              <li>
+                <button>会員一覧</button>
+              </li>
+              <li>
+                <button>注文履歴一覧</button>
+              </li>
+              <li>
+                <button>ジャンル一覧</button>
+              </li>
+              <li>
+                <button>ログアウト</button>
+              </li>
+            <% elsif customer_signed_in? %>
+              <li>
+                <button>マイページ</button>
+              </li>
+              <li>
+                <button>商品一覧</button>
+              </li>
+              <li>
+                <button>カート</button>
+              </li>
+              <li>
+                <button>ログアウト</button>
+              </li>
+            <% else %>
+              <li>
+                <button>About</button>
+              </li>
+              <li>
+                <button>商品一覧</button>
+              </li>
+              <li>
+                <button>新規登録</button>
+              </li>
+              <li>
+                <button>ログイン</button>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
       <p id="notice"><%= notice %></p>
