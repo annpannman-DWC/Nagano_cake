@@ -35,3 +35,15 @@
   padding: 20px 0 20px 60px;
   box-shadow: 0 2px rgba(6,0,1,.26);
 }
+
+.centered-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+.centered-text p {
+  font-size: 24px;
+  line-height: 1.5;
+}
