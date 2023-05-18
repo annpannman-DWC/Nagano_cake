@@ -30,10 +30,10 @@
                   <%= item.name %>
                 <% end %>
                 </td>
-              <td><%= item.price_without_tax.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= item.category.name %></td>
+              <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
+              <td><%= item.genre.name %></td>
               <td>
-                <% if item.sale_status == true %>
+                <% if item.is_active == true %>
                   <p class="text-success">販売中</p>
                 <% else %>
                   <p class="text-danger">売り切れ</p>
