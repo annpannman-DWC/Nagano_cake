@@ -1,34 +1,18 @@
 <div class="container">
-  <div class="row justify-content-start">
+  <div class="row">
     <div class="col-md-2">
-      <div class="card border-0 shadow">
-        <div class="card-body">
-          <h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif;">ジャンル検索</h5>
-          <ul class="list-group list-group-flush" id="genre-list">
-            <!-- ジャンル検索の内容を追加する -->
-          </ul>
-        </div>
+      <h5>ジャンル検索</h5>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <% @genres.each do |genre| %>
+            <li class="list-group-item">
+              <%= link_to genre.name, items_path(genre_id: genre.id) %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
-</div>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-  $(document).ready(function() {
-    // ジャンル検索の項目を動的に追加する
-    var genres = ['氷菓', 'クッキー', 'マフィン']; // ジャンルのリスト
-    var genreList = $('#genre-list');
-    
-    for (var i = 0; i < genres.length; i++) {
-      var listItem = $('<li class="list-group-item">' + genres[i] + '</li>');
-      genreList.append(listItem);
-    }
-    
-    // アニメーションを追加する
-    genreList.hide().fadeIn(1000); // フェードインのアニメーション（1秒）
-  });
-  </script>
 
   <div class="row justify-content-center mt-5">
     <div class="col-sm-12 col-md-10">
@@ -57,6 +41,4 @@
       </div>
     <% end %>
   </div>
-
-  <div class="row mt-5"></div>
 </div>
