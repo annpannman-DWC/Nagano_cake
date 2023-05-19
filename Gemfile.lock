@@ -246,11 +246,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-<<<<<<< HEAD
   enum_help
-=======
-  faker
->>>>>>> 373b613d4397f1276e41d31859fa30c1bdb2a2fd
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
