@@ -28,8 +28,30 @@
       </table>
     <% end %>
     </div>
-    <div class="col-sm-12">
-
+    <div class="col-sm-9">
+      <table border="1">
+        <thead>
+          <tr>
+            <th class="col-xs-2 col-ms-3 col-md-2 col-lg-1">郵便番号</th>
+            <th class="col-xs-5 col-ms-3 col-md-2 col-lg-3">住所</th>
+            <th class="col-xs-2 col-ms-3 col-md-2 col-lg-1">宛名</th>
+            <th class="col-xs-4 col-ms-3 col-md-2 col-lg-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @deliveries.each do |delivery| %>
+          <tr>
+            <td><%= delivery.postal_code %></td>
+            <td><%= delivery.address %></td>
+            <td><%= delivery.address_name %></td>
+            <td>
+              <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-success" %>
+              <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
