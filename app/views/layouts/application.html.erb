@@ -14,53 +14,79 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container">
-          <a class="navbar_brand" href="/">LOGO</a>
+          <a class="navbar_brand　nav-link text-warning h2" href="/">LOGO</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <% if admin_signed_in? %>
-              <li>
-                <button>商品一覧</button>
+            <% if customer_signed_in? %>
+              <li class="m-2">
+                <%= link_to customers_mypage_path do %>
+                  <button type="button" class="btn btn-outline-dark">マイページ</button>
+                <% end %>
               </li>
-              <li>
-                <button>会員一覧</button>
+              <li class="m-2">
+                <%= link_to items_path do %>
+                  <button type="button" class="btn btn-outline-dark">商品一覧</button>
+                <% end %>
               </li>
-              <li>
-                <button>注文履歴一覧</button>
+              <li class="m-2">
+                <%= link_to cart_items_path do %>
+                  <button type="button" class="btn btn-outline-dark">カート</button>
+                <% end %>
               </li>
-              <li>
-                <button>ジャンル一覧</button>
+              <li class="m-2">
+                <%= link_to destroy_customer_session_path, method: :delete do %>
+                  <button type="button" class="btn btn-outline-dark">ログアウト</button>
+                <% end %>
               </li>
-              <li>
-                <button>ログアウト</button>
+            <% elsif admin_signed_in? %>
+              <li class="m-2">
+                <%= link_to admin_items_path do %>
+                  <button type="button" class="btn btn-outline-dark">商品一覧</button>
+                <% end %>
               </li>
-            <% elsif customer_signed_in? %>
-              <li>
-                <button>マイページ</button>
+              <li class="m-2">
+                <%= link_to admin_customers_path do %>
+                  <button type="button" class="btn btn-outline-dark">会員一覧</button>
+                <% end %>
               </li>
-              <li>
-                <button>商品一覧</button>
+              <li class="m-2">
+                <%= link_to admin_path do %>
+                  <button type="button" class="btn btn-outline-dark">注文履歴一覧</button>
+                <% end %>
               </li>
-              <li>
-                <button>カート</button>
+              <li class="m-2">
+                <%= link_to admin_genres_path do %>
+                  <button type="button" class="btn btn-outline-dark">ジャンル一覧</button>
+                <% end %>
               </li>
-              <li>
-                <button>ログアウト</button>
+              <li class="m-2">
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <button type="button" class="btn btn-outline-dark">ログアウト</button>
+                <% end %>
               </li>
             <% else %>
-              <li>
-                <button>About</button>
+              <li class="m-2">
+                <%= link_to about_path do %>
+                  <button type="button" class="btn btn-outline-dark">About</button>
+                <% end %>
               </li>
-              <li>
-                <button>商品一覧</button>
+              <li class="m-2">
+                <%= link_to items_path do %>
+                  <button type="button" class="btn btn-outline-dark">商品一覧</button>
+                <% end %>
               </li>
-              <li>
-                <button>新規登録</button>
+              <li class="m-2">
+                <%= link_to new_customer_registration_path do %>
+                  <button type="button" class="btn btn-outline-dark">新規登録</button>
+                <% end %>
               </li>
-              <li>
-                <button>ログイン</button>
+              <li class="m-2">
+                <%= link_to new_customer_session_path do %>
+                  <button type="button" class="btn btn-outline-dark">ログイン</button>
+                <% end %>
               </li>
             <% end %>
             </ul>
