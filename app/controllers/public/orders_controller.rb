@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   
   def new
     @order = Order.new
-    @addresses = current_customer.addresses
+    @deliveries = current_customer.deliveries
     @payment_methods = {
       credit_card: I18n.t("order.payment_methods.credit_card"),
       transfer: I18n.t("order.payment_methods.transfer"),
