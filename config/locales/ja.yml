@@ -1,0 +1,5 @@
+ja:
+  order:
+    payment_methods:
+      credit_card: "クレジットカード"
+      transfer: "銀行振込"
