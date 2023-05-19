@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-md-2">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif;">ジャンル検索</h5>
+          <ul class="list-group list-group-flush" id="genre-list">
+            <!-- ジャンル検索の内容を追加する -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    // ジャンル検索の項目を動的に追加する
+    var genres = ['氷菓', 'クッキー', 'マフィン']; // ジャンルのリスト
+    var genreList = $('#genre-list');
+    
+    for (var i = 0; i < genres.length; i++) {
+      var listItem = $('<li class="list-group-item">' + genres[i] + '</li>');
+      genreList.append(listItem);
+    }
+    
+    // アニメーションを追加する
+    genreList.hide().fadeIn(1000); // フェードインのアニメーション（1秒）
+  });
+  </script>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-12 col-md-10">
+      <h2 class="text-center" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold; color: #333;">商品一覧 (全 <%= @items.count %>件)</h2>
+    </div>
+  </div>
+
+  <div class="row mt-3 mb-3 justify-content-center">
+    <% @items.each do |item| %>
+      <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0">
+          <%= link_to item_path(item) do %>
+            <div class="img-wrap">
+              <%= image_tag item.get_image(200, 200), class: "card-img-top img-fluid" %>
+            </div>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif;"><%= item.name %></h5>
+            <% if item.is_active == true %>
+              <p class="card-text text-success"><%= item.price.to_s(:delimited, delimiter: ',') %>円（税抜）</p>
+            <% else %>
+              <p class="card-text text-danger font-weight-bold">販売停止中</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-5"></div>
+</div>
