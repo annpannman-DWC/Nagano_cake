@@ -26,12 +26,13 @@ Rails.application.routes.draw do
     get "/customers/mypage", to: "customers#show"
     patch "/customers", to: "customers#update"
     get "/customers/confirm", to: "customers#confirm"
-    patch "/customers/withdraw", to: "customoers#withdraw"
-    resources :cart_items, only: %i[index create destroy update]
-    delete "/cart_items/destroy_all", to: "cart_items#destroy_all"
+    patch "/customers/withdraw", to: "customers#withdraw"
+    resources :cart_items, only: %i[index create destroy update] do
+      delete :destroy_all, on: :collection
+    end
     resources :orders, only: %i[new create index show]
     get "/orders/complete", to: "orders#complete"
-    get "/orders/comfirm", to: "orders#comfirm"
+    get "/orders/confirm", to: "orders#confirm"  # Fix the typo here from "comfirm" to "confirm"
     resources :deliveries, only: %i[index edit create update destroy]
   end
   
