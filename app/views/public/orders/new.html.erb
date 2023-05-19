@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <h2>注文情報入力</h2>
+      <%= form_with model: @order, url: new_order_path, method: :get do |f| %>
+        <h4 class="mt-2"><b>支払い方法</b></h4>
+
+        <%= f.radio_button :payment_method, :credit_card %>
+        <%= f.label :payment_method, @payment_methods[:credit_card] %><br>
+
+        <%= f.radio_button :payment_method, :transfer %>
+        <%= f.label :payment_method, @payment_methods[:transfer] %><br>
+
+        <h4 class="mt-2"><b>お届け先</b></h4>
+
+        <%= f.radio_button :address_option, 0, checked: true %>
+        <%= f.label :address_option, "ご自身の住所", value: 0, class: "radio-label label-size" %><br>
+
+        <% if current_customer.addresses.empty? %>
+        <% else %>
+          <%= f.radio_button :address_option, 1 %>
+          <%= f.label :address_option, "登録済み住所から選択", value: 1, class: "radio-label label-size" %><br>
+
+          <div class="radio-button-content">
+            <%= f.collection_select :address_id, current_customer.addresses, :id, :address_display %>
+          </div>
+        <% end %>
+
+        <%= f.radio_button :address_option, 2 %>
+        <%= f.label :address_option, "新しいお届け先", value: 2, class: "radio-label label-size" %><br>
+
+        <table class="ml-5">
+          <tr>
+            <td>郵便番号（ハイフン無し）</td>
+            <td><%= f.text_field :postal_code, class: "form-control", size: 40, placeholder: "8888888" %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, class: "form-control", size: 40, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :address_name, class: "form-control", size: 40, placeholder: "令和" %></td>
+          </tr>
+        </table>
+
+        <div class="text-center mt-3">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
