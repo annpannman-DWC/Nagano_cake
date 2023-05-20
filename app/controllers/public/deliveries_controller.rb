@@ -6,6 +6,7 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
+    @delivery = Delivery.find(params[:id])
   end
 
   def create
@@ -20,6 +21,12 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def update
+    @delivery = Delivery.find(params[:id])
+    if @delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
