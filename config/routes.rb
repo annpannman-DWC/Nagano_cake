@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    scope module: :public do
+  scope module: :public do
     root to: "homes#top"
     get "about", to: "homes#about"
     resources :items, only: %i[index show]
@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     resources :cart_items, only: %i[index create destroy update] do
       delete :destroy_all, on: :collection
     end
-    resources :orders, only: %i[new create index show]
     get "/orders/complete", to: "orders#complete"
-    get "/orders/confirm", to: "orders#confirm"  # Fix the typo here from "comfirm" to "confirm"
+    resources :orders, only: %i[new create index show]
+    post "/orders/confirm", to: "orders#confirm"  # Fix the typo here from "comfirm" to "confirm"
     resources :deliveries, only: %i[index edit create update destroy]
   end
-  
+
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   namespace :admin do
     get "/"=>"homes#top"
     resources :items ,only: [:index,:new,:create,:show,:edit,:update]
@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   end
 
 
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
