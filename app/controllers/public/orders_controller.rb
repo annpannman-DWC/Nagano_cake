@@ -62,7 +62,10 @@ class Public::OrdersController < ApplicationController
     # redirect_to thanx_path
 
   def show
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
+  end
+
+  def confirm
   end
 
   def thanx
