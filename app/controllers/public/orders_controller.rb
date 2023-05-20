@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method].to_i
-    @order.shipping_cost = 800
+    @order.shopping_cost = 800
     @cart_items = current_customer.cart_items
     # @cart_items = CartItem.where(customer_id: current_customer.id)
 
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_option] == "0"   # 自分の住所
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.address_name = current_customer.full_name
+      @order.address_name = current_customer.last_name
     elsif params[:order][:address_option] == "1"  # 登録している配送先
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
@@ -64,9 +64,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     #@order = Order.find(params[:id])
-  end
-
-  def confirm
   end
 
   def thanx

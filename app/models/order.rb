@@ -9,8 +9,8 @@ class Order < ApplicationRecord
 
   # 支払い方法
   enum payment_method: { credit_card: 0, transfer: 1 }
-  
-  #お届け先住所 
+
+  #お届け先住所
   #enum address: { my_address: 0, registration_address: 1, new_address: 2 }
 
   validates :address, presence: true

@@ -16,7 +16,7 @@
             <th>小計</th>
           </tr>
           <tr>
-            <td><%= image_tag cart_item.get_image(40,40) %>  <%= cart_item.item.name %></td>
+            <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
             <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
             <td><%= cart_item.amount %></td>
             <td><%#= ((cart_item.amount) * (cart_item.item.price * 1.1).floor)).to_s(:delimited, delimiter: ',') %></td>
