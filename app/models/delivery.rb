@@ -1,6 +1,7 @@
 class Delivery < ApplicationRecord
   belongs_to :customer, optional: true
   
+  
   def delivery_display
    '〒' + postal_code + ' ' + address + ' ' + address_name
   end
