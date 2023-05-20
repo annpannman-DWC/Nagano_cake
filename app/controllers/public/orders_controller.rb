@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @payment_methods = {
       credit_card: I18n.t("order.payment_methods.credit_card"),
       transfer: I18n.t("order.payment_methods.transfer"),
-      cash_on_delivery: I18n.t("order.payment_methods.cash_on_delivery")
+      # cash_on_delivery: I18n.t("order.payment_methods.cash_on_delivery")
     }
   end
 
@@ -19,6 +19,7 @@ class Public::OrdersController < ApplicationController
     @order.payment_method = params[:order][:payment_method].to_i
     @order.shipping_cost = 800
     @cart_items = current_customer.cart_items
+    # @cart_items = CartItem.where(customer_id: current_customer.id)
 
     # 配送先の条件分岐
     if params[:order][:address_option] == "0"   # 自分の住所
@@ -51,8 +52,8 @@ class Public::OrdersController < ApplicationController
         @order_item.purchase_price = cart_item.item.price_without_tax * cart_item.quantity * 1.1
         @order_item.save
       end
-      redirect_to destroy_all_cart_items_path
       @cart_items.destroy_all #カートのデータ全て削除
+      redirect_to destroy_all_cart_items_path
     else
       @order = Order.new(order_params)
       render :new
