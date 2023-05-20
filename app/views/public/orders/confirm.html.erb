@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="row">
+<<<<<<< HEAD
     <div class="col-sm-7 offset-sm-1">
       <table class="table table-bordered">
         <thead>
@@ -52,6 +53,42 @@
         <%= f.hidden_field :payment_method, value: @order.payment_method %>
         <div class="text-center mb-3"><%= f.submit "注文を確定する", class: "btn btn-success" %></div>
       <% end %>
+=======
+    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+      <table class="table">
+        <% @cart_items.each do |cart_item| %>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <tr>
+            <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
+            <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%#= ((cart_item.amount) * (cart_item.item.price * 1.1).floor)).to_s(:delimited, delimiter: ',') %></td>
+          </tr>
+        </thead>
+        <% end %>
+      </table>
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shopping_cost %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%= %></td>
+        </tr>
+      </table>
+
+>>>>>>> e34d2f81a54797f536384f58e8e8d838801ebe11
     </div>
   </div>
 </div>

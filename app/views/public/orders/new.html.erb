@@ -6,6 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+<<<<<<< HEAD
       <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
         <p><i class="fas fa-yen-sign"></i>支払い方法</p>
         <%= f.radio_button :payment_method, 0 %>
@@ -34,7 +35,7 @@
         <%= f.radio_button :address_option, 1 %>
         <%= f.label :address_option, "登録済み住所から選択" %>
         <%= f.collection_select :address_id, current_customer.deliveries, :id, :delivery_display %>
-       
+
         <%= f.radio_button :address_option, 2 %>
         <%= f.label :address_option, "新しいお届け先" %>
         <table>
