@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :set_customer, only: %i[edit show]
+  before_action :set_customer, only: %i[edit show withdraw]
   
   def edit
     # @customer = Customer.new
@@ -9,15 +9,18 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
-        @customer = current_customer
+    @customer = current_customer
     @customer.update(customer_params)
-redirect_to customers_mypage_path
+    redirect_to customers_mypage_path
   end
   
   def confirm
   end
   
   def withdraw
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to new_customer_registration_path, notice: "退会に成功しました。"
   end
   
   private
