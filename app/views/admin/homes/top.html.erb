@@ -16,10 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="link">
-            </td>
-          </tr>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td><%= order.customer %></td>
+              <td><%= order.quantity %></td>
+              <td></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

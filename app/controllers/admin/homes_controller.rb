@@ -1,8 +1,9 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def top
-    @params = params[:id]
+    @orders = Order.all
+    # @params = params[:id]
   end
-  
+
 end
