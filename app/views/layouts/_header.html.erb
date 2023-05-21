@@ -1,0 +1,102 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg bg-info">
+    <div class="container-md">
+      <div class="mx-3">
+        <h1><%= link_to image_tag("Nagano-Cake-Logo.png"), root_path %></h1>
+      </div>
+      <h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+          <!-- 顧客がログインしている場合のメニュー -->
+          <div class="mr-5 mt-2">
+            <i class="fas fa-smile-wink fa-spin"></i> ようこそ、<strong><%= current_customer.last_name %></strong> さん！<i class="fas fa-smile-wink fa-spin"></i>
+          </div>
+          <li>
+            <%= link_to customers_mypage_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-user"></i> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-store"></i> 商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to cart_items_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-shopping-cart"></i> カート
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+
+          <% elsif admin_signed_in? %>
+          <!-- 管理者がログインしている場合のメニュー -->
+          <div class="mt-2 mr-2">
+            <i class="fas fa-smile-wink fa-spin"></i><strong> 管理者 </strong><i class="fas fa-smile-wink fa-spin"></i>
+          </div>
+          <li>
+            <%= link_to admin_items_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-store"></i> 商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-users"></i> 顧客一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_root_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-file-alt"></i> 注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-tags"></i> ジャンル
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+
+          <% else %>
+          <!-- ログインしていない場合のメニュー -->
+          <div class="mr-5 mt-2">
+            <i class="fas fa-smile-wink fa-spin"></i> ようこそ、<strong>ゲスト</strong> さん！<i class="fas fa-smile-wink fa-spin"></i>
+          </div>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-store"></i> 商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
