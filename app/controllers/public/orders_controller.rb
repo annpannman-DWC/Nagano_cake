@@ -22,20 +22,20 @@ class Public::OrdersController < ApplicationController
 
 
     # 配送先の条件分岐
-    if params[:order][:address_option] == "0"   # 自分の住所
-      @order.postal_code = current_customer.postal_code
-      @order.address = current_customer.address
-      @order.address_name = current_customer.last_name
-    elsif params[:order][:address_option] == "1"  # 登録している配送先
-      @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.address_name = @address.address_name
-    elsif params[:order][:address_option] == "2"  # 新たに配送先を指定
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.address_name = params[:order][:address_name]
-    end
+    # if params[:order][:address_option] == "0"   # 自分の住所
+    #   @order.postal_code = current_customer.postal_code
+    #   @order.address = current_customer.address
+    #   @order.address_name = current_customer.last_name
+    # elsif params[:order][:address_option] == "1"  # 登録している配送先
+    #   @address = Address.find(params[:order][:address_id])
+    #   @order.postal_code = @address.postal_code
+    #   @order.address = @address.address
+    #   @order.address_name = @address.address_name
+    # elsif params[:order][:address_option] == "2"  # 新たに配送先を指定
+    #   @order.postal_code = params[:order][:postal_code]
+    #   @order.address = params[:order][:address]
+    #   @order.address_name = params[:order][:address_name]
+    # end
   end
 
   def create
