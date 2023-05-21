@@ -10,7 +10,7 @@
       <table>
         <tr>
           <th>購入者</th>
-          <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+          <td><%= @order.customer.full_name %></td>
         </tr>
         <tr>
           <th>注文日</th>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th>支払方法</th>
-          <td><%= @order.cpayment_method %></td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <%#=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
         <tr>

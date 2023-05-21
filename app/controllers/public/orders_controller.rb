@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.payment_method = params[:order][:payment_method].to_i
+    # @order.payment_method = params[:order][:payment_method].to_i
     @order.shopping_cost = 800
     @cart_items = current_customer.cart_items
 
