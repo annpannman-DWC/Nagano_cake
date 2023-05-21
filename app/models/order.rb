@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
-  has_many :order_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
   # 受注ステータス
   enum order_received_status: { wait: 0, check: 1, making: 2, standby: 3, sent: 4 }

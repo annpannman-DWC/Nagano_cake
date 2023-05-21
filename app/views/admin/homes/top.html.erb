@@ -19,8 +19,8 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-              <td><%= order.customer %></td>
-              <td><%#= order.amount %></td>
+              <td><%= order.customer.full_name %></td>
+              <td><%#= order.order_details.quantity %></td>
               <td>保留中</td>
             </tr>
           <% end %>
