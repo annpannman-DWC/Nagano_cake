@@ -10,7 +10,9 @@
       <h4>登録情報</h4>
     </div>
     <div class="col-sm-3 px-sm-0 mx-auto">
-      <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success px-4 mb-2" %>
+      <% if @customer.first_name + @customer.last_name != "guestuser" %>
+        <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success px-4 mb-2" %>
+      <% end %>
     </div>
   </div>
 

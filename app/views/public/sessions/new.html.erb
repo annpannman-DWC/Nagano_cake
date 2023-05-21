@@ -32,7 +32,7 @@
         </div>
       </div>
   <% end %>
-  
+
   <div class="row my-3">
     <div class="col-sm-4 px-sm-0 offset-sm-1">
       <span style="background-color: #f2f2f2;">会員登録がお済みでない方</span>
@@ -41,6 +41,16 @@
   <div class="row my-3">
     <div class="col-sm-4 px-sm-0 offset-sm-1">
        <p class="text-center"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください</p>
+    </div>
+  </div>
+  <div class="row my-3">
+     <div class="px-sm-0 offset-sm-1">
+      <span style="background-color: #f2f2f2;">ゲストログインはこちら<U>（一部機能が制限されます）</U></span>
+      </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-sm-4 px-sm-0 offset-sm-1">
+       <p class="text-center"><%= link_to "こちら", customers_guest_login_path, method: :post %>からゲストログインを行ってください</p>
     </div>
   </div>
 </div>
