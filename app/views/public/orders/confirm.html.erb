@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 mb-3 offset-sm-1">
+      <h3>注文情報確認</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+      <table class="table">
+        <% @cart_items.each do |cart_item| %>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+          <tr>
+            <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
+            <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%#= ((cart_item.amount) * (cart_item.item.price * 1.1).floor)).to_s(:delimited, delimiter: ',') %></td>
+          </tr>
+        </thead>
+        <% end %>
+      </table>
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shopping_cost %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%= %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
