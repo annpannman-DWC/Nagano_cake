@@ -1,100 +1,85 @@
-<header class="sticky-top">
-  <nav class="navbar navbar-expand-lg bg-info">
-    <div class="container-md">
-      <div class="mx-3">
-        <h1><%= link_to image_tag("Nagano-Cake-Logo.png"), root_path %></h1>
-      </div>
-      <h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-info border-bottom">
+    <div class="container">
+      <p class="navbar_brand">
+        <%= link_to root_path do %>
+          <%= image_tag("Nagano-Cake-Logo.png") %>
+        <% end %>
+      </p>
+      <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-          <!-- 顧客がログインしている場合のメニュー -->
-          <div class="mr-5 mt-2">
-            <i class="fas fa-smile-wink fa-spin"></i> ようこそ、<strong><%= current_customer.last_name %></strong> さん！<i class="fas fa-smile-wink fa-spin"></i>
-          </div>
-          <li>
-            <%= link_to customers_mypage_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-user"></i> マイページ
+        <% if customer_signed_in? %>
+          <li class="m-2">
+            <%= link_to customers_mypage_path do %>
+              <button type="button" class="btn btn-outline-dark">マイページ</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to items_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-store"></i> 商品一覧
+          <li class="m-2">
+            <%= link_to items_path do %>
+              <button type="button" class="btn btn-outline-dark">商品一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to cart_items_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-shopping-cart"></i> カート
+          <li class="m-2">
+            <%= link_to cart_items_path do %>
+              <button type="button" class="btn btn-outline-dark">カート</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
+          <li class="m-2">
+            <%= link_to destroy_customer_session_path, method: :delete do %>
+              <button type="button" class="btn btn-outline-dark">ログアウト</button>
             <% end %>
           </li>
-
-          <% elsif admin_signed_in? %>
-          <!-- 管理者がログインしている場合のメニュー -->
-          <div class="mt-2 mr-2">
-            <i class="fas fa-smile-wink fa-spin"></i><strong> 管理者 </strong><i class="fas fa-smile-wink fa-spin"></i>
-          </div>
-          <li>
-            <%= link_to admin_items_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-store"></i> 商品一覧
+        <% elsif admin_signed_in? %>
+          <li class="m-2">
+            <%= link_to admin_items_path do %>
+              <button type="button" class="btn btn-outline-dark">商品一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-users"></i> 顧客一覧
+          <li class="m-2">
+            <%= link_to admin_customers_path do %>
+              <button type="button" class="btn btn-outline-dark">会員一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to admin_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-file-alt"></i> 注文履歴一覧
+          <li class="m-2">
+            <%= link_to admin_path do %>
+              <button type="button" class="btn btn-outline-dark">注文履歴一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-tags"></i> ジャンル
+          <li class="m-2">
+            <%= link_to admin_genres_path do %>
+              <button type="button" class="btn btn-outline-dark">ジャンル一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to about_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-link"></i> About
+          <li class="m-2">
+            <%= link_to destroy_admin_session_path, method: :delete do %>
+              <button type="button" class="btn btn-outline-dark">ログアウト</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
+        <% else %>
+          <li class="m-2">
+            <%= link_to about_path do %>
+              <button type="button" class="btn btn-outline-dark">About</button>
             <% end %>
           </li>
-
-          <% else %>
-          <!-- ログインしていない場合のメニュー -->
-          <div class="mr-5 mt-2">
-            <i class="fas fa-smile-wink fa-spin"></i> ようこそ、<strong>ゲスト</strong> さん！<i class="fas fa-smile-wink fa-spin"></i>
-          </div>
-          <li>
-            <%= link_to about_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-link"></i> About
+          <li class="m-2">
+            <%= link_to items_path do %>
+              <button type="button" class="btn btn-outline-dark">商品一覧</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to items_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-store"></i> 商品一覧
+          <li class="m-2">
+            <%= link_to new_customer_registration_path do %>
+              <button type="button" class="btn btn-outline-dark">新規登録</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
+          <li class="m-2">
+            <%= link_to new_customer_session_path do %>
+              <button type="button" class="btn btn-outline-dark">ログイン</button>
             <% end %>
           </li>
-          <li>
-            <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-          </li>
-          <% end %>
+        <% end %>
         </ul>
       </div>
     </div>
