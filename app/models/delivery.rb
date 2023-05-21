@@ -8,6 +8,6 @@ class Delivery < ApplicationRecord
 
   validates :address, presence: true
   validates :postal_code, presence: true, length: { minimum: 0, maximum: 7 }
-  validates :name, presence: true
+  validates :address_name, presence: true
 
 end

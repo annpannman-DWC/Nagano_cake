@@ -117,11 +117,11 @@ ActiveRecord::Schema.define(version: 2023_05_18_040232) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "shopping_cost", null: false
+    t.integer "shipping_cost", null: false
     t.string "address_name", default: "", null: false
     t.text "address", default: "", null: false
     t.string "postal_code", default: "", null: false
-    t.integer "payment_method", default: 0, null: false
+    t.integer "payment_method", null: false
     t.integer "total_price", null: false
     t.integer "order_received_status", null: false
     t.datetime "created_at", precision: 6, null: false
