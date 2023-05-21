@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
 
   def top
     @orders = Order.all
-    # @params = params[:id]
+
   end
 
 end

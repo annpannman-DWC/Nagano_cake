@@ -12,4 +12,12 @@ class Order < ApplicationRecord
   validates :address, presence: true
   validates :postal_code, presence: true, length: { minimum: 0, maximum: 7 }
   validates :address_name, presence: true
+
+  def order_quantity_count
+    total = 0
+    order_details.each do |order_detail|
+      total += order_detail.quantity
+    end
+    return total
+  end
 end
