@@ -1,21 +1,21 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-sm-8 px-sm-0 mx-auto text-center">
-      <h2>マイページ</h2>
-    </div>
-  </div>
-</div>
-  <div class="row">
-    <div class="col-sm3 px-sm-0 offset-sm-4 text-right">
-      <h4>登録情報</h4>
-    </div>
-    <div class="col-sm-3 px-sm-0 mx-auto">
-      <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success px-4 mb-2" %>
+    <div class="col-sm-4 px-sm-0 offset-sm-3 mt-3">
+       <span style="background-color: #f2f2f2; font-size: 25px;">マイページ</span>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-6 px-sm-0 offset-sm-1 mx-auto">
+    <div class="col-sm-3 px-sm-0 offset-sm-1">
+      <h4 class="d-inline">登録情報</h4>
+      <div class="d-inline">
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success px-3 ml-2 mb-2" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 px-sm-0 offset-sm-1">
       <table class="table table-bordered">
         <tr>
           <th class="table-info">お名前</th>
@@ -46,14 +46,23 @@
   </div>
 
   <div class="row">
-    <div class="col-sm3 px-sm-0 offset-sm-4 text-right mr-4"><h4>配送先</h4></div>
-    <div class="col-sm-3 px-sm-0 mx-auto">
-      <%= link_to "一覧を見る", deliveries_path, data: {"turbolinks" => false}, class:"btn btn-primary mb-2" %>
+    <div class="col-sm-3 px-sm-0 offset-sm-1 text-left">
+      <h4>配送先</h4>
+    </div>
+    <div class="col-sm-3 px-sm-0">
+      <%= link_to "一覧を見る", deliveries_path, data: { "turbolinks" => false }, class: "btn btn-primary mb-2" %>
     </div>
   </div>
+
   <div class="row">
-    <div class="col-sm3 px-sm-0 offset-sm-4 text-right"><h4>注文履歴</h4></div>
-    <div class="col-sm-3 px-sm-0 mx-auto">
-      <%= link_to "一覧を見る", orders_path, class:"btn btn-primary mb-2" %>
+    <div class="col-sm-3 px-sm-0 offset-sm-1 text-left">
+      <h4>注文履歴</h4>
+    </div>
+    <div class="col-sm-3 px-sm-0">
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary mb-2" %>
     </div>
   </div>
+
+  <div class="row mt-5"></div>
+  <br><br>
+</div>
