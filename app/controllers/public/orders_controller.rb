@@ -59,29 +59,6 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-    # current_customer.cart_items.destroy_all
-
-    # redirect_to order_path(@order)
-  # end
-
-    # if @order.save
-    #   @cart_items = current_customer.cart_items
-    #   @cart_items.each do |cart_item|
-    #     @order_item = OrderItem.new
-    #     @order_item.order_id = @order.id
-    #     @order_item.item_id = cart_item.item_id
-    #     @order_item.quantity = cart_item.quantity
-    #     @order_item.purchase_price = cart_item.item.price_without_tax * cart_item.quantity * 1.1
-    #     @order_item.save
-    #   end
-    #   @cart_items.destroy_all #カートのデータ全て削除
-    #   redirect_to destroy_all_cart_items_path
-    # else
-    #   @order = Order.new(order_params)
-    #   render :new
-    # end
-  # end
-
   private
 
   def order_params
