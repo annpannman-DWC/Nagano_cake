@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-      <table class="table">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>商品名</th>
@@ -16,21 +16,23 @@
           </tr>
           <% @total_amount = 0 %>
           <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
-            <!--単価-->
-            <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
-            <!--数量-->
-            <td><%= cart_item.amount %></td>
-            <!--単価*数量=小計-->
-            <td><%= (amount = (cart_item.amount * cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td> 
-          </tr>
+          <tbody>
+            <tr>
+              <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
+              <!--単価-->
+              <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
+              <!--数量-->
+              <td><%= cart_item.amount %></td>
+              <!--単価*数量=小計-->
+              <td><%= (amount = (cart_item.amount * cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
+            </tr>
+          </tbody>
           <!--table内商品の小計の合計を@total_amountとする-->
           <% @total_amount += amount %>
           <% end %>
         </thead>
       </table>
-      <table class="table">
+      <table class="table table-bordered">
         <tr>
           <th>送料</th>
           <td><%= @order.shopping_cost %></td>
@@ -41,10 +43,36 @@
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= (@order.total_price = @order.shopping_cost + @total_amount).to_s(:delimited, delimiter: ',')%></td>
+          <td><%= (@order.total_price = @order.shopping_cost + @total_amount).to_s(:delimited, delimiter: ',') %></td>
         </tr>
       </table>
-
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <tr>
+              <th>支払い方法</th>
+              <td><%= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <th>お届け先</th>
+              <td><%= "〒#{@order.postal_code} #{@order.address} #{@order.address_name}" %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= form_with model: @order,  local:true do |f| %>
+            <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+            <%= f.hidden_field :address, :value => @order.address %>
+            <%= f.hidden_field :address_name, :value => @order.address_name %>
+            <%= f.hidden_field :total_price, :value => @order.total_price %>
+            <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+            
+            <div class="text-center mb-3"><%= f.submit "注文を確定する", class: "btn btn-success" %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

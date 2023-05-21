@@ -21,58 +21,41 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
 
 
-    # 配送先の条件分岐
-    # if params[:order][:address_option] == "0"   # 自分の住所
-    #   @order.postal_code = current_customer.postal_code
-    #   @order.address = current_customer.address
-    #   @order.address_name = current_customer.last_name
-    # elsif params[:order][:address_option] == "1"  # 登録している配送先
-    #   @address = Address.find(params[:order][:address_id])
-    #   @order.postal_code = @address.postal_code
-    #   @order.address = @address.address
-    #   @order.address_name = @address.address_name
-    # elsif params[:order][:address_option] == "2"  # 新たに配送先を指定
-    #   @order.postal_code = params[:order][:postal_code]
-    #   @order.address = params[:order][:address]
-    #   @order.address_name = params[:order][:address_name]
-    # end
+    #配送先の条件分岐
+    if params[:order][:address_option] == "0"   # 自分の住所
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.address_name = current_customer.last_name
+    elsif params[:order][:address_option] == "1"  # 登録している配送先
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.address_name = @address.address_name
+    elsif params[:order][:address_option] == "2"  # 新たに配送先を指定
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.address_name = params[:order][:address_name]
+    end
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.shipping_cost = 800
-
-    @cart_items = current_customer.cart_items
-    @cart_items.each do |cart_item|
-      @order_item = OrderItem.new
-      @order_item.order_id = @order.id
-      @order_item.item_id = cart_item.item_id
-      @order_item.quantity = cart_item.quantity
-      @order_item.purchase_price = cart_item.item.price_without_tax * cart_item.quantity * 1.1
-      @order_item.save
-    end
-
-    current_customer.cart_items.destroy_all
-
-    redirect_to order_path(@order)
-  # end
-
+    @order.shopping_cost = 800
     if @order.save
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
-        @order_item = OrderItem.new
-        @order_item.order_id = @order.id
-        @order_item.item_id = cart_item.item_id
-        @order_item.quantity = cart_item.quantity
-        @order_item.purchase_price = cart_item.item.price_without_tax * cart_item.quantity * 1.1
-        @order_item.save
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.quantity = cart_item.amount
+        @order_detail.order_price = cart_item.item.price * cart_item.amount * 1.1
+        @order_detail.makeing_status = 0
+        if @order_detail.save
+          @cart_items.destroy_all
+        end
       end
-      @cart_items.destroy_all #カートのデータ全て削除
-      redirect_to destroy_all_cart_items_path
-    else
-      @order = Order.new(order_params)
-      render :new
+      redirect_to orders_complete_path
     end
   end
 
