@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   # before_action :authenticate_customer!
- 
+
   def index
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
@@ -12,7 +12,6 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.amount = 1 # 例として数量を1に設定
 
     if @cart_item.save
       flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
