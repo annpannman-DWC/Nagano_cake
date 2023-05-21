@@ -7,7 +7,6 @@
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
       <table class="table">
-        <% @cart_items.each do |cart_item| %>
         <thead>
           <tr>
             <th>商品名</th>
@@ -15,14 +14,21 @@
             <th>数量</th>
             <th>小計</th>
           </tr>
+          <% @total_amount = 0 %>
+          <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= image_tag cart_item.item.get_image(40,40) %>  <%= cart_item.item.name %></td>
+            <!--単価-->
             <td><%= ((cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
+            <!--数量-->
             <td><%= cart_item.amount %></td>
-            <td><%#= ((cart_item.amount) * (cart_item.item.price * 1.1).floor)).to_s(:delimited, delimiter: ',') %></td>
+            <!--単価*数量=小計-->
+            <td><%= (amount = (cart_item.amount * cart_item.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td> 
           </tr>
+          <!--table内商品の小計の合計を@total_amountとする-->
+          <% @total_amount += amount %>
+          <% end %>
         </thead>
-        <% end %>
       </table>
       <table class="table">
         <tr>
@@ -31,11 +37,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= %></td>
+          <td><%= @total_amount.to_s(:delimited, delimiter: ',') %></td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= %></td>
+          <td><%= (@order.total_price = @order.shopping_cost + @total_amount).to_s(:delimited, delimiter: ',')%></td>
         </tr>
       </table>
 
