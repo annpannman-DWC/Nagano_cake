@@ -55,8 +55,8 @@ class Public::OrdersController < ApplicationController
 
     current_customer.cart_items.destroy_all
 
-    redirect_to order_path(@order) 
-  end
+    redirect_to order_path(@order)
+  # end
 
     if @order.save
       @cart_items = current_customer.cart_items
@@ -81,3 +81,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :address_name, :payment_method, :total_price, :order_received_status)
   end
+
+end
