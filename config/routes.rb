@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     resources :deliveries, only: %i[index edit create update destroy]
   end
 
+  devise_scope :customer do
+    post '/customers/guest_login', to: 'public/sessions#guest_login'
+  end
+  
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }

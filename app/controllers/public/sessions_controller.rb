@@ -21,12 +21,21 @@ class Public::SessionsController < Devise::SessionsController
 
   # protected
 
+  # ゲストログイン機能
+  def guest_login
+    guest_user = Customer.find_or_create_by(first_name: "guest", last_name: "user", email: "guest@example.com") do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+    end
+    sign_in guest_user
+    redirect_to customers_mypage_path, notice: "guestuserでログインしました。"
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   private
-  
+
     # 退会してた場合にサインアップできないようにするメソッド
   def configure_customer_status
     @customer = Customer.find_by(email: params[:customer][:email])
@@ -37,5 +46,5 @@ class Public::SessionsController < Devise::SessionsController
       create
     end
   end
-  
+
 end
