@@ -1,39 +1,40 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h3>注文履歴一覧</h3>
-    <div class="table-responsive">
-      <table class="table table-bordered table-condensed text-center">
-        <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払料金</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
-        </tr>
-        <% @orders.each do |order| %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>注文履歴一覧</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-condensed text-center">
           <tr>
-            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td>
-              <%= order.postal_code %><br>
-              <%= order.address %><br>
-              <%= order.address_name %>
-            </td>
-            <td>
-              <% order.order_details.each do |order_detail| %>
-                <%= order_detail.item.name %><br>
-              <% end %>
-            </td>
-            <td><%= order.total_price.to_s(:delimited, delimiter: ',') %></td>
-            <td><%= order.order_received_status %></td>
-            <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払料金</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
           </tr>
-        <% end %>
-      </table>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                <%= order.postal_code %><br>
+                <%= order.address %><br>
+                <%= order.address_name %>
+              </td>
+              <td>
+                <% order.order_details.each do |order_detail| %>
+                  <%= order_detail.item.name %><br>
+                <% end %>
+              </td>
+              <td><%= order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
+              <td><%= order_status_japanese(order.order_received_status) %></td>
+              <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 
   <div class="row mt-5"></div>
   <br><br><br>
-
 </div>

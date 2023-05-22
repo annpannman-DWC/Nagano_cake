@@ -59,11 +59,3 @@ gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'faker'
 gem "enum_help"
-gem 'kaminari'
-gem 'ransack'
-gem 'payjp'
-
-gem 'font-awesome-rails'
-
-gem 'pry-rails'
-
