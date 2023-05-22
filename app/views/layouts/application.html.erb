@@ -14,8 +14,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
     <!-- ジャンル選択フォーム -->
     <div class="container">
       <div class="row">
@@ -32,12 +33,15 @@
         <% end %>
       </div>
     </div>
-    
     <div class="ml-5">
       <div class="text-center mt-3"><h5><strong><%= flash[:notice] %></strong></h5></div>
       <div class="text-center mt-3"><h5><strong><%= flash[:alert] %></strong></h5></div>
-     </div>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    </div>
+    <main class="min-vh-100">
+      <%= yield %>
+    </main>
+    <footer class="bg-dark">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
