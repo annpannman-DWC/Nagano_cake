@@ -29,7 +29,7 @@
         <tr>
           <th>受注ステータス</th>
           <td>
-            <%= f.select :order, Order.order_received_statuses_i18n.invert %>
+            <%= f.select :order_received_status, Order.order_received_statuses_i18n.invert %>
             <%= f.submit "更新", class: "btn btn-success" %>
           </td>
         </tr>
