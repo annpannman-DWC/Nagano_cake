@@ -25,13 +25,13 @@
           <th>支払方法</th>
           <td><%= @order.payment_method_i18n %></td>
         </tr>
-        <%#=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
+        <%#=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %> <td><%#= f.select :order_received_status, Order.order_received_status_i18n.invert %></td> <%#=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
         <tr>
           <th>受注ステータス</th>
           <td><%#= f.select :order_received_status, Order.order_received_status_i18n.invert %></td>
         </tr>
       </table>
-      <%# end %>
+      <%# end %><%# end %>
     </div>
   </div>
 </div>
