@@ -6,10 +6,4 @@ class Admin::HomesController < ApplicationController
     @order = Order.new
   end
 
-  private
-
-  # def order_params
-  #   params.require(:order).permit(:order_received_status)
-  # end
-
 end
