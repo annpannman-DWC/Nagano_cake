@@ -6,9 +6,8 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   
-  validates :name, presence: true
-  validates :caption, length: { minimum: 0, maximum: 500 }
-  validates :price, presence: true
+  validates :name, :price, presence: true
+  validates :caption, presence: true, length: { minimum: 0, maximum: 500 }
   
   def get_image(width, height)
     unless image.attached?

@@ -9,9 +9,7 @@ class Order < ApplicationRecord
   # 支払い方法
   enum payment_method: { credit_card: 0, transfer: 1 }
 
-  validates :address, presence: true
-  validates :postal_code, presence: true, length: { minimum: 0, maximum: 7 }
-  validates :address_name, presence: true
+  validates :shopping_cost, :address_name, :address, :postal_code, :payment_method, :total_price, :order_received_status, presence: true
 
   def order_quantity_count
     total = 0
