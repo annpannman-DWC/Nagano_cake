@@ -6,8 +6,7 @@ class Delivery < ApplicationRecord
    '〒' + postal_code + ' ' + address + ' ' + address_name
   end
 
-  validates :address, presence: true
+  validates :address, :address_name, presence: true
   validates :postal_code, presence: true, length: { minimum: 0, maximum: 7 }
-  validates :address_name, presence: true
 
 end
