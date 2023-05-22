@@ -16,22 +16,7 @@
   <body>
     <%= render 'layouts/header' %>
     
-    <!-- ジャンル選択フォーム -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-6 mt-4">
-          <!-- ジャンル選択フォーム -->
-          <%= form_tag(items_path, method: :get, class: "form-inline text-right") do %>
-            <%= select_tag :genre_id, options_for_select(@genres.map { |genre| [genre.name, genre.id] }), prompt: "ジャンルの選択権を与える", class: "form-control mr-2", style: "opacity: 0.5;" %>
-            <%= submit_tag "検索", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <% @items.each do |item| %>
-        <% end %>
-      </div>
-    </div>
+   
     
     <div class="ml-5">
       <div class="text-center mt-3"><h5><strong><%= flash[:notice] %></strong></h5></div>
