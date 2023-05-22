@@ -6,11 +6,11 @@ class Genre < ApplicationRecord
     if search == 'perfect'
       Genre.where(name: word)
     elsif search == 'forward'
-      Genre.where('name LIkE ?', word + '%')
+      Genre.where('name LIkE ?', '#{word}%')
     elsif search == 'backward'
-      Genre.where('name LIkE ?', '%' + word)
+      Genre.where('name LIkE ?', '%#{word}')
     else
-      Genre.where('name LIKE ?', '%' + word + '%')
+      Genre.where('name LIKE ?', '%#{word}%')
     end
   end
 

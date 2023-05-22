@@ -22,11 +22,11 @@ class Item < ApplicationRecord
     if search == 'perfect'
       Item.where(name: word)
     elsif search == 'forward'
-      Item.where('name LIkE ?', word + '%')
+      Item.where('name LIkE ?', '#{word}%')
     elsif search == 'backward'
-      Item.where('name LIkE ?', '%' + word)
+      Item.where('name LIkE ?', '%#{word}%')
     else
-      Item.where('name LIKE ?', '%' + word + '%')
+      Item.where('name LIKE ?', '%#{word}%%')
     end
   end
   
