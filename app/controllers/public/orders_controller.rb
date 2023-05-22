@@ -10,8 +10,12 @@ class Public::OrdersController < ApplicationController
     @payment_methods = {
       credit_card: I18n.t("order.payment_methods.credit_card"),
       transfer: I18n.t("order.payment_methods.transfer"),
-      # cash_on_delivery: I18n.t("order.payment_methods.cash_on_delivery")
     }
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def confirm
