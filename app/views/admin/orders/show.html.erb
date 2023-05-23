@@ -62,6 +62,20 @@
           <% end %>
         </tbody>
       </table>
+      <table>
+        <tr>
+          <th>商品合計</th>
+          <td><%= (@order.total_price - @order.shopping_cost).to_s(:delimited, delimiter: ',') %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shopping_cost %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
