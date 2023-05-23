@@ -1,12 +1,15 @@
 class Public::ItemsController < ApplicationController
   def index
-    if params[:genre_id].present?
-      @genre = Genre.find(params[:genre_id])
-      @items = @genre.items
-    else
-      @items = Item.all
-    end
+    @items = Item.all
     @genres = Genre.all
+  
+    if params[:word].present?
+      if params[:range] == "Genre"
+        @items = @items.joins(:genre).where("genres.name LIKE ?", "%#{params[:word]}%")
+      elsif params[:range] == "Item"
+        @items = @items.where("name LIKE ?", "%#{params[:word]}%")
+      end
+    end
   end
 
   def show

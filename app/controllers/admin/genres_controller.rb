@@ -21,6 +21,16 @@ class Admin::GenresController < ApplicationController
     @genre.update(genre_params)
     redirect_to admin_genres_path
   end
+  
+  def search
+    # 検索条件を取得
+    search_word = params[:word]
+    search_range = params[:range]
+    search_type = params[:search]
+    
+    # 検索処理
+    @genres = Genre.search(search_word, search_range, search_type)
+  end
 
   private
 
