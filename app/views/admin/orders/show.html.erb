@@ -25,7 +25,7 @@
           <th>支払方法</th>
           <td><%= @order.payment_method_i18n %></td>
         </tr>
-        <%=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %> <td>
+        <%=form_with model: @order, url:admin_order_path, method: :patch, local: true do |f| %>
         <tr>
           <th>受注ステータス</th>
           <td>
@@ -52,6 +52,12 @@
             <td><%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %></td>
             <td><%= order_detail.quantity %></td>
             <td><%= ((order_detail.item.price * 1.1).floor * (order_detail.quantity)).to_s(:delimited, delimiter: ',') %></td>
+            <td>
+              <%=form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
+                <%= f.select :makeing_status, OrderDetail.makeing_statuses_i18n.invert %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

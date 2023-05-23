@@ -10,3 +10,9 @@ ja: #日本語の設定を行う
         making: "製作中"
         standby: "発送準備中"
         sent: "発送済み"
+    order_detail:
+      makeing_status:
+        impossible: "着手不可"
+        stay: "製作待ち"
+        making: "製作中"
+        complete: "製作完了"
