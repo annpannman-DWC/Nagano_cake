@@ -22,7 +22,7 @@ body {
   }
 
 .header {
-    background-color: #336699;
+    background-color: #fffafa;
     padding: 10px;
   }
   .logo-container {
@@ -32,7 +32,7 @@ body {
   .logo-container img {
     vertical-align: middle;
   }
-  
+
   .logo-container img {
     width: 150px; /* 画像の幅を指定 */
     height: auto; /* 高さを自動調整 */
