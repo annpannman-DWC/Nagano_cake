@@ -2,8 +2,15 @@
   <nav class="navbar navbar-expand-lg bg-info">
     <div class="container-md">
       <div class="mx-3">
-        <h1><%= link_to image_tag("Nagano-Cake-Logo.png"), root_path %></h1>
+        <h1>
+          <%= link_to root_path do %>
+            <div class="logo-container">
+              <%= image_tag("background2.jpg", alt: "Logo") %>
+            </div>
+          <% end %>
+        </h1>
       </div>
+    </div>
       <h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
