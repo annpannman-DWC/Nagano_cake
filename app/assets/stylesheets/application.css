@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background-image: url("/assets/cheesse.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+.header {
+    background-color: #fffafa;
+    padding: 10px;
+  }
+  .logo-container {
+    display: inline-block;
+    padding: 5px;
+  }
+  .logo-container img {
+    vertical-align: middle;
+  }
+
+  .logo-container img {
+    width: 150px; /* 画像の幅を指定 */
+    height: auto; /* 高さを自動調整 */
+  }
