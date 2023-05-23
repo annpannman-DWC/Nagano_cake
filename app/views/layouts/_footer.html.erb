@@ -1,5 +1,12 @@
 <div class='row'>
 	<div class='mx-auto'>
 		<p class="text-light d-flex align-items-center" style="height:50px;">美味すぎ注意報</p>
+		<p class="text-right">
+			<% if current_page?(admin_path) %>
+			  <%= link_to "Topページ", root_path %>
+			<% else %>
+			  <%= link_to "管理者ログインページ", admin_path %>
+			<% end %>
+		</p>
 	</div>
 </div>
