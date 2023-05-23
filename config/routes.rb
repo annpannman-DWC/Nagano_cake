@@ -17,6 +17,14 @@ Rails.application.routes.draw do
     resources :deliveries, only: %i[index edit create update destroy]
     get 'search' => 'searches#search_list'
   end
+  
+  
+  # ジャンル検索用のルート
+  get '/genres/search', to: 'genres#search', as: 'genre_search'
+  
+  # 商品検索用のルート
+  get '/items/search', to: 'items#search', as: 'item_search'
+
 
   devise_scope :customer do
     post '/customers/guest_login', to: 'public/sessions#guest_login'
