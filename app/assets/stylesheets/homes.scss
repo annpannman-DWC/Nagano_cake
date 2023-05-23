@@ -5,50 +5,46 @@
 @charset "utf-8";
 
 
-/*========= 検索窓のためのCSS ===============*/
-
-/*検索窓のエリア*/
- #search-wrap {
-     position: absolute;/*絶対配置にして*/
-   z-index: 2;/*最前面に設定。数字は変更可*/
-   top:10px;
-   right:10px;
-}
-
-/*テキスト入力input設定*/
- #search-text{
-  -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
-  width: 60px;/*テキスト入力エリアが伸びる前の横幅*/
-  height: 60px;
-    padding: 20px;
-  border: none;
-  background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 17px center;/*虫眼鏡アイコンを背景に表示*/
-  background-size: 25px 25px;
-  transition: all 0.5s;/*transitionを使ってスムースに伸ばす*/
-  outline: none;
-  cursor: pointer;/*カーソルを指マークに*/
-}
-
-/*テキスト入力inputにフォーカスした時の形状*/
- #search-text:focus {
-  width: 250px;/*テキスト入力エリアが伸びる後の横幅*/
-  padding: 20px 0 20px 60px;
-  box-shadow: 0 2px rgba(6,0,1,.26);
-}
-
-.centered-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}
-.centered-text p {
-  font-size: 24px;
-  line-height: 1.5;
-}
-
 // ロゴ画像の背景を透明にするため
 .logo-img {
     background-color: transparent;
   }
+
+// 検索窓のため
+ .search-form {
+   max-width: 600px;
+   margin: 0 auto;
+   text-align: right; /* 右寄せ */
+ }
+
+ .search-form .input-group {
+   position: relative;
+   width: 100%;
+   max-width: 400px;
+   margin: 0 auto;
+   display: inline-block; /* インラインブロック要素に変更 */
+ }
+
+ .search-form input[type="text"] {
+   width: 100%;
+   padding: 12px;
+   font-size: 16px;
+   border-radius: 24px;
+   border: 1px solid #ddd;
+ }
+
+ .search-form input[type="text"]:focus {
+   outline: none;
+   box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.3);
+ }
+
+ .search-form .btn-primary {
+   border-radius: 24px;
+   border-color: #ddd;
+   background-color: #f2f2f2;
+   color: #555;
+ }
+
+ .search-form .btn-primary:hover {
+   background-color: #ddd;
+ }
