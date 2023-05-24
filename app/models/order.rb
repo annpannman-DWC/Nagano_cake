@@ -16,6 +16,10 @@ class Order < ApplicationRecord
     order_details.sum(&:subtotal)
   end
   
+  def order_received_status_i18n
+    I18n.t("order_statuses.#{order_received_status}")
+  end
+  
   def paid_with_credit_card?
     payment_method == 'credit_card'
   end
