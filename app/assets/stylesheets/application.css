@@ -37,3 +37,12 @@ body {
     width: 150px; /* 画像の幅を指定 */
     height: auto; /* 高さを自動調整 */
   }
+  
+   background: linear-gradient(45deg, #757575 0%, #9E9E9E 45%, #E8E8E8 70%, #9E9E9E 85%, #757575 90% 100%);
+   
+   .silver-text {
+  background-image: linear-gradient(to right, #C0C0C0, #F5F5F5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
