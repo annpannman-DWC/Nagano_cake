@@ -16,7 +16,7 @@
       <p>請求情報</p>
       <table class="table table-bordered">
         <tr><th class="table-active">送料</th><td>800</td></tr>
-        <tr><th class="table-active">商品合計</th><td><%= @order.amount.to_s(:delimited, delimiter: ',') %></td></tr>
+        <tr><th class="table-active">商品合計</th><td><%= number_with_delimiter(@order.amount.to_i) %></td></tr>
         <tr><th class="table-active">請求合計</th><td><%= "#{number_with_delimiter(@order.amount + 800)}" %></td></tr>
       </table>
     </div>
@@ -40,8 +40,8 @@
             <td style="word-break:break-all"><%= order_detail.item.name %></td>
             <td><%= ((order_detail.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
             <td><%= order_detail.quantity %></td>
-            <td><%= ((order_detail.item.price * order_detail.quantity * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
-            <% @billing_amount += (order_detail.item.price * order_detail.quantity * 1.1).floor %>
+            <td><%= (order_detail.item.price * order_detail.quantity).floor.to_s(:delimited, delimiter: ',') %></td>
+            <% @billing_amount += (order_detail.item.price * order_detail.quantity).floor %>
           </tr>
         <% end %>
         </tbody>
