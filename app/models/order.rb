@@ -10,16 +10,16 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
 
   validates :shopping_cost, :address_name, :address, :postal_code, :payment_method, :total_price, :order_received_status, presence: true
-  
+
   def amount
     # 注文商品の合計金額を計算するロジック
     order_details.sum(&:subtotal)
   end
-  
+
   def order_received_status_i18n
     I18n.t("order_statuses.#{order_received_status}")
   end
-  
+
   def paid_with_credit_card?
     payment_method == 'credit_card'
   end
