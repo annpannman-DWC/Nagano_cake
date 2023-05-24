@@ -20,12 +20,12 @@
               <td class="align-middle"><%= "〒#{order.postal_code}" %><br><%= order.address %><br><%= order.address_name %></td>
               <td class="align-middle" style="word-break:break-all">
                 <% order.order_details.each do |order_detail| %>
-                  <%= link_to order_detail.item.name,item_path(order_detail.item) %><br>
+                  <%= link_to order_detail.item.name, item_path(order_detail.item) %><br>
                 <% end %>
               </td>
               <td class="align-middle"><%= "#{number_with_delimiter(order.amount + 800)}円" %></td>
               <td class="align-middle"><%= t("order_statuses.#{order.order_received_status}") %></td>
-              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-primary"  %></td>
+              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
             </tr>
           <% end %>
         </tbody>
