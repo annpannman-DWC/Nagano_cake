@@ -25,9 +25,32 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @items, class: 'custom-pagination' %>
   </div>
   
   <div class="row mt-5"></div>
   <br><br><br>
-  
+
 </div>
+
+<style>
+  .custom-pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-pagination li {
+  margin: 0 5px;
+}
+
+.custom-pagination a {
+  text-decoration: none;
+  color: #333;
+}
+
+.custom-pagination .current {
+  font-weight: bold;
+}
+</style>
