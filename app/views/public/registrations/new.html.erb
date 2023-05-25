@@ -11,27 +11,31 @@
         <table>
           <tr>
             <div class="form-group">
-              <th scope="col"><%= f.label :名前 %></th>
-              <td>(姓)</td>
+              <th scope="col">
+                <%= f.label "名前" %>
+              </th>
+              <td><%= f.label :last_name, "(姓)" %></td>
               <td><%= f.text_field :last_name %></td>
-              <td>(名)</td>
+              <td><%= f.label :first_name, "(名)" %></td>
               <td><%= f.text_field :first_name %></td>
             </div>
           </tr>
-
           <tr>
+            
             <div class="form-group">
-              <th><%= f.label :フリガナ %></th>
-              <td>(セイ)</td>
+              <th scope="col">
+                <%= f.label "フリガナ" %>
+              </th>
+              <td><%= f.label :last_name_kana, "(セイ)" %></td>
               <td><%= f.text_field :last_name_kana %></td>
-              <td>(メイ)</td>
+              <td><%= f.label :first_name_kana, "(メイ)" %></td>
               <td><%= f.text_field :first_name_kana %></td>
             </div>
           </tr>
 
           <tr>
             <div class="form-group">
-              <th><%= f.label :メールアドレス %></th>
+              <th><%= f.label :email, "メールアドレス" %></th>
               <td></td>
               <td><%= f.text_field :email, size: "20", autofocus: true, placeholder: "sample@example.com" %></td>
             </div>
@@ -39,7 +43,7 @@
 
           <tr>
             <div class="form-group">
-              <th><%= f.label "郵便番号(ハイフンなし)" %></th>
+              <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
               <td></td>
               <td><%= f.text_field :postal_code %></td>
             </div>
@@ -47,7 +51,7 @@
 
           <tr>
             <div class="form-group">
-              <th><%= f.label :住所 %></th>
+              <th><%= f.label :address, "住所" %></th>
               <td></td>
               <td colspan="2"><%= f.text_field :address %></td>
             </div>
@@ -55,7 +59,7 @@
 
           <tr>
             <div class="form-group">
-              <th><%= f.label "電話番号(ハイフンなし)" %></th>
+              <th><%= f.label :phone_number, "電話番号(ハイフンなし)" %></th>
               <td></td>
               <td><%= f.text_field :phone_number %></td>
             </div>
@@ -63,7 +67,7 @@
 
           <tr>
             <div class="form-action">
-              <th><%= f.label "パスワード(６文字以上)" %></th>
+              <th><%= f.label :password, "パスワード(６文字以上)" %></th>
               <td></td>
               <td><%= f.password_field :password %></td>
             </div>
@@ -71,7 +75,7 @@
 
           <tr>
             <div>
-              <th><%= f.label "パスワード(確認用)" %></th>
+              <th><%= f.label :password_confirmation, "パスワード(確認用)" %></th>
               <td></td>
               <td><%= f.password_field :password_confirmation %></td>
             </div>
