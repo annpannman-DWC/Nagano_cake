@@ -233,6 +233,8 @@ GEM
       websocket (~> 1.0)
     semantic_range (3.0.0)
     spring (4.1.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -295,6 +297,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
+  spring-commands-rspec
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
