@@ -33,7 +33,7 @@
         <% @items.last(4).each do |item| %>
           <div class="col-md-3">
             <%= link_to item_path(item.id) do %>
-              <p class="img-wrap"><%= image_tag item.get_image(200,200), fallback: "no_image.png" %></p>
+              <p class="img-wrap"><%= image_tag item.get_image(200,200), fallback: "no_image.png", alt: "商品画像" %></p>
             <% end %>
             <div class="card-body">
               <p><%= item.name %></p>

@@ -12,6 +12,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
+  #   # redirect_to customers_mypage_path
   # end
 
   # GET /resource/edit
@@ -51,9 +52,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  # マイページに遷移するように追記
+  def after_sign_up_path_for(resource)
+    super(resource)
+    customers_mypage_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
