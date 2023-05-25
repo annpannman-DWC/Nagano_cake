@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :set_customer, only: %i[edit show withdraw]
-  before_action :ensure_guest_user, only: %i[edit]
+  before_action :ensure_guest_user, only: %i[edit update withdraw]
   
   def edit
     # @customer = Customer.new
@@ -33,11 +33,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:email, :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :phone_number)
   end
-  
-  def ensure_guest_user
-    if @customer.first_name + @customer.last_name == "guestuser"
-      redirect_to customers_mypage_path , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-    end
-  end  
   
 end

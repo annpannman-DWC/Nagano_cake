@@ -1,5 +1,6 @@
 class Public::DeliveriesController < ApplicationController
   before_action :set_delivery, only: %i[edit update destroy]
+  before_action :ensure_guest_user
 
   def index
     @deliveries = Delivery.all
@@ -34,11 +35,11 @@ class Public::DeliveriesController < ApplicationController
   end
 
   private
-  
+
   def set_delivery
      @delivery = Delivery.find(params[:id])
   end
-   
+
   def delivery_params
     params.require(:delivery).permit(:postal_code, :address, :address_name)
   end

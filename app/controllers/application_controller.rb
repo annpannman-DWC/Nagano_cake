@@ -16,5 +16,11 @@ class ApplicationController < ActionController::Base
         authenticate_customer!
       end
     end
+    
+    def ensure_guest_user
+      if current_customer.first_name + current_customer.last_name == "guestuser"
+        redirect_to customers_mypage_path , notice: 'ゲストユーザーはこの画面へ遷移できません。'
+      end
+    end
 
 end
