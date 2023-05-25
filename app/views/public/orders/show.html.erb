@@ -39,7 +39,6 @@
           <th class="table-active">商品合計</th>
           <td><%= (@order.total_price - @order.shopping_cost).to_s(:delimited, delimiter: ',') %></td>
         </tr>
-        <%# @billing_amount = @order.amount.to_i + 800 %>
         <tr>
           <th class="table-active">請求合計</th>
           <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %></td>
@@ -61,8 +60,6 @@
         </thead>
         <tbody>
           <% @order.order_details.each do |order_detail| %>
-            <%# subtotal = (order_detail.item.price * order_detail.quantity).floor %>
-            <%# @billing_amount += subtotal %>
             <tr>
               <td style="word-break: break-all"><%= order_detail.item.name %></td>
               <td><%= ((order_detail.item.price * 1.1).floor).to_s(:delimited, delimiter: ',') %></td>
