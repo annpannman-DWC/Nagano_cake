@@ -1,11 +1,8 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col">
-      <% if @range == "Genre" %>
-
       <h3 class="active text-center">ジャンル検索</h3>
-      
-       <div class="row mt-3 mb-3 justify-content-center">
+        <div class="row mt-3 mb-3 justify-content-center">
         <% @genres.each do |genre| %>
           <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div class="card border-0 shadow-sm">
@@ -26,31 +23,6 @@
           </div>
         <% end %>
       </div>
-      <% else %>
-      <h3 class="active text-center">商品検索</h3>
-
-      <div class="row mt-3 mb-3 justify-content-center">
-        <% @items.each do |item| %>
-          <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card border-0 shadow-sm">
-              <%= link_to item_path(item) do %>
-                <div class="img-wrap">
-                  <%= image_tag item.get_image(200, 200), class: "card-img-top img-fluid" %>
-                </div>
-              <% end %>
-              <div class="card-body">
-                <h5 class="card-title" style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #8B4513;"><%= item.name %></h5>
-                <% if item.is_active == true %>
-                  <p class="card-text text-success"><%= item.price.to_s(:delimited, delimiter: ',') %>円（税抜）</p>
-                <% else %>
-                  <p class="card-text text-danger font-weight-bold">販売停止中</p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>
