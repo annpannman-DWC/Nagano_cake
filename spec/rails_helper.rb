@@ -65,4 +65,5 @@ RSpec.configure do |config|
   # FactoryBotのメソッドを使う為の記述
   config.include Capybara::DSL
   # Capybara::DSL モジュールをインクルード
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 end
