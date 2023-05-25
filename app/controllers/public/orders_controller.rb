@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :ensure_guest_user
 
   def index
     @orders = current_customer.orders
