@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
       transfer: I18n.t("order.payment_methods.transfer"),
     }
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details

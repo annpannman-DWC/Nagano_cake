@@ -24,7 +24,7 @@
                 <% end %>
               </td>
               <td class="align-middle"><%= "#{number_with_delimiter(order.amount + 800)}円" %></td>
-              <td class="align-middle"><%= t("order_statuses.#{order.order_received_status}") %></td>
+              <td class="align-middle"><%= t("order_statuses.#{order.order_received_status_i18n}") %></td>
               <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
             </tr>
           <% end %>
