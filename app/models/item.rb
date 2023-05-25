@@ -20,16 +20,4 @@ class Item < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.search_for(search,word)
-    if search == 'perfect'
-      Item.where(name: word)
-    elsif search == 'forward'
-      Item.where('name LIkE ?', '#{word}%')
-    elsif search == 'backward'
-      Item.where('name LIkE ?', '%#{word}')
-    else
-      Item.where('name LIKE ?', '%#{word}%')
-    end
-  end
-
 end
