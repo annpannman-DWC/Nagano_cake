@@ -46,14 +46,14 @@
           </td>
         </tr>
       </table>
-    </div>
-  </div>
-  <div class="row justify-content-evenly">
-    <div class="col-4">
-      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-    </div>
-    <div class="col-4">
-      <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
+      <div class="row justify-content-evenly">
+        <div class="col-4">
+          <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-outline-warning" %>
+        </div>
+        <div class="col-4">
+          <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-outline-warning" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
