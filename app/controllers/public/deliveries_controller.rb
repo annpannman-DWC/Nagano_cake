@@ -3,7 +3,7 @@ class Public::DeliveriesController < ApplicationController
   before_action :ensure_guest_user
 
   def index
-    @deliveries = Delivery.all
+    @deliveries = current_customer.deliveries
     @delivery = Delivery.new
   end
 
