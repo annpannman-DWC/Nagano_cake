@@ -9,7 +9,7 @@
       <%= form_with model: @genre_new, url:admin_genres_path, method: :post, local: true do |f| %>
         <%= f.label :name, "ジャンル名" %>
         <%= f.text_field :name, placeholder: "ジャンル名" %>
-        <%= f.submit "新規登録",class: "btn btn-primary" %>
+        <%= f.submit "新規登録",class: "btn btn-warning" %>
       <% end %>
     </div>
   </div>
@@ -27,8 +27,8 @@
           <tr>
             <td><%= genre.name %></td>
             <td>
-              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
-              <%= link_to "削除する", admin_genre_path(genre.id), remote: true, method: :delete, class: "btn btn-danger" %>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-outline-warning" %>
+              <%= link_to "削除する", admin_genre_path(genre.id), remote: true, method: :delete, class: "btn btn-outline-danger" %>
             </td>
           </tr>
         </tbody>

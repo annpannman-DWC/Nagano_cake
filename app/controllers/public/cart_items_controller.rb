@@ -48,4 +48,7 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
   end
+  
+  def increase_or_create
+  
 end
