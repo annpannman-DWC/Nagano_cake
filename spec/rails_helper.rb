@@ -66,4 +66,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   # Capybara::DSL モジュールをインクルード
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.before(:each, type: :feature) do
+    I18n.locale = :en
+  end
+  # エラーメッセージを表示できる最高のやつ
 end

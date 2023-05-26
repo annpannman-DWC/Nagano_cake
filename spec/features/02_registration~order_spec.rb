@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Nagano_cake", type: :feature do
+  let(:customer) { create(:customer) }
+
+
   describe "トップページ" do
     it "新規登録画面のリンクを押下すると新規登録画面が表示される" do
       visit root_path
@@ -10,7 +13,6 @@ RSpec.describe "Nagano_cake", type: :feature do
   end
 
   describe "新規登録画面" do
-    let(:customer) { create(:customer) }
 
     before do
       visit new_customer_registration_path
@@ -59,16 +61,70 @@ RSpec.describe "Nagano_cake", type: :feature do
     end
   end
 
-  # describe "トップ画面" do
-  #   let(:item) { create(:item, id: 1, name: "Sample Item", caption: "Sample Caption", price: 1000, is_active: true, genre_id: 1) }
+  describe "トップ画面" do
+  let!(:item) { FactoryBot.create(:item) }
+
+    before do
+      visit root_path
+    end
+
+    it "任意の商品画像を押下すると該当商品の詳細画面に遷移する" do
+      click_link "商品画像" # 商品名をリンクテキストとしてクリックする
+      expect(page).to have_current_path(item_path(item.id))
+    end
+
+    it "商品情報が正しく表示されている" do
+      expect(page).to have_content(item.name)
+      expect(page).to have_content((item.price * 1.1).floor)
+    end
+  end
+
+  describe "商品詳細画面" do
+    let!(:item) { create(:item) }
+    # let(:cart_item) { FactoryBot.create(:cart_item, item: item, customer: customer) }
+
+    it "個数を選択し、カートに入れるボタンを押下するとカート画面に遷移する" do
+      login_as(customer, scope: :customer)
+      visit item_path(item.id)
+      select "5個", from: "cart_item[amount]"
+      click_button "カートに入れる"
+      expect(page).to have_current_path(cart_items_path)
+    end
+
+    it "カートの中身が正しく表示されている" do
+      login_as(customer, scope: :customer)
+      cart_item = FactoryBot.create(:cart_item, item: item, customer: customer)
+      visit cart_items_path
+      expect(page).to have_content(cart_item.item.name)
+      expected_price = (cart_item.item.price * 1.1).floor.to_s(:delimited)
+      expect(page).to have_content(expected_price)
+    end
+  end
+  
+  describe "カート画面" do
+    let!(:item) { create(:item) }
+    let!(:cart_item) { FactoryBot.create(:cart_item, item: item, customer: customer) }
     
-  #   before do
-  #     visit root_path
-  #   end
+    before do
+      login_as(customer, scope: :customer)
+      visit cart_items_path
+    end
     
-  #   it "任意の商品画像を押下すると該当商品の詳細画面に遷移する" do
-  #     click_link(item.name) # 商品名をリンクテキストとしてクリックする
-  #   expect(page).to have_current_path(item_path(item))
-  #   end
-  # end
+    # it "カートの中身が正しく表示されている" do
+    #   expect(page).to have_content(cart_item.item.name)
+    #   # expected_price = expected_price = (cart_item.item.price * 1.1).floor.to_i.to_s(:delimited)
+    #   expect(page).to have_content(number_to_currency(cart_item.item.price * 1.1, unit: "円", format: "%n%u", precision: 0))
+
+    # end
+    
+    # it "商品の個数を変更し、更新ボタンを押下すると、合計表示が正しく表示されるか" do
+    #   within(".cart-item-#{cart_item.id}") do
+    #     fill_in "cart_item[amount]", with: 3
+    #     click_button "変更"
+    #   end
+    #   updated_price = (item.price * 1.1 * 3).floor.to_s(:delimited)
+    #   expect(page).to have_content(updated_price)
+    # end
+  end
+
 end
