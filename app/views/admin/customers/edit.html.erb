@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-0 mb-3 offset-sm-1">
-      <p><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</p>
+      <h3><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
     </div>
   </div>
 
@@ -46,6 +46,16 @@
       <%= f.radio_button :is_deleted, :true %>
       <%= f.label :is_deleted, "退会" %>
     </div>
+  </div>
+  <div class="error">
+    <% if @customer.errors.any? %>
+      <%= @customer.errors.count %>件のエラーがあります
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
   <%= f.submit "変更を保存", class: "btn btn-success" %>
   <% end %>
