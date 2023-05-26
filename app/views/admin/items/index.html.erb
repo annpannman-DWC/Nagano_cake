@@ -31,7 +31,7 @@
                 <% end %>
                 </td>
               <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= item.genre.name %></td>
+              <td><%= item.genrename %></td>
               <td>
                 <% if item.is_active == true %>
                   <p class="text-success">販売中</p>

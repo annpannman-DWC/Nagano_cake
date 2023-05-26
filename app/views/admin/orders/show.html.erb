@@ -55,7 +55,7 @@
             <td>
               <%=form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch, local: false do |f| %>
                 <%= f.select :makeing_status, OrderDetail.makeing_statuses_i18n.invert %>
-                <%= f.submit "更新", class: "btn btn-success" %>
+                <%= f.submit "更新", class: "btn btn-outline-warning" %>
               <% end %>
             </td>
           </tr>
