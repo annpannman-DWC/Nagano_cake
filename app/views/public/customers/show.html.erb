@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-sm-4 px-sm-0 offset-sm-3 mt-3">
-       <span style="background-color: #f2f2f2; font-size: 25px;">マイページ</span>
+       <span style="font-size: 25px;">マイページ</span>
     </div>
   </div>
 
@@ -9,7 +9,7 @@
     <div class="col-sm-3 px-sm-0 offset-sm-1">
       <h4 class="d-inline">登録情報</h4>
       <div class="d-inline">
-        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success px-3 ml-2 mb-2" %>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success mb-2" %>
       </div>
     </div>
   </div>
@@ -18,27 +18,27 @@
     <div class="col-sm-6 px-sm-0 offset-sm-1">
       <table class="table table-bordered">
         <tr>
-          <th class="table-info">お名前</th>
+          <th>お名前</th>
           <td><%= @customer.full_name %></td>
         </tr>
         <tr>
-          <th class="table-info">フリガナ</th>
+          <th>フリガナ</th>
           <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
         </tr>
         <tr>
-          <th class="table-info">郵便番号</th>
+          <th>郵便番号</th>
           <td><%= @customer.postal_code %></td>
         </tr>
         <tr>
-          <th class="table-info">住所</th>
+          <th>住所</th>
           <td><%= @customer.address %></td>
         </tr>
         <tr>
-          <th class="table-info">電話番号</th>
+          <th>電話番号</th>
           <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
-          <th class="table-info">メールアドレス</th>
+          <th>メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
       </table>

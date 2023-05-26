@@ -8,9 +8,18 @@
 
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+      <div class="error">
+        <% if @item.errors.any? %>
+          <%= @item.errors.count %>件のエラーがあります
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
       <%= form_with model: @item, url:admin_item_path do |f| %>
         <table>
-
           <tr>
             <div class="form-group">
               <th><%= f.label :商品画像 %></th>
@@ -62,13 +71,10 @@
               </td>
             </div>
           </tr>
-
-          <tr>
-            <div class="form-action">
-              <th></th>
-              <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
-            </div>
-          </tr>
+          <div class="form-action">
+            <th></th>
+            <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+          </div>
         </table>
       <% end %>
     </div>

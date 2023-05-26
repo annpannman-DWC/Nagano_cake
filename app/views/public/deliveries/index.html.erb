@@ -27,6 +27,16 @@
         </tr>
       </table>
     <% end %>
+    <div class="error">
+        <% if @delivery.errors.any? %>
+          <%= @delivery.errors.count %>件のエラーがあります
+          <ul>
+            <% @delivery.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </div>
     <div class="col-sm-9">
       <table border="1">
