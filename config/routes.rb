@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :deliveries, only: %i[index edit create update destroy]
     get 'search' => 'searches#search_list'
   end
-  
+
   devise_scope :customer do
     post '/customers/guest_login', to: 'public/sessions#guest_login'
   end
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/"=>"homes#top"
     resources :items ,only: [:index,:new,:create,:show,:edit,:update]
-    resources :genres ,only: [:index,:create,:edit,:update]
+    resources :genres ,only: [:index,:create,:edit,:update,:destroy]
     resources :customers ,only: [:index,:show,:edit,:update]
     resources :orders ,only: [:show,:update]
     resources :order_details ,only: [:update]

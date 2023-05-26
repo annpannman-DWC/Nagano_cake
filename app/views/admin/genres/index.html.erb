@@ -9,14 +9,14 @@
       <%= form_with model: @genre_new, url:admin_genres_path, method: :post, local: true do |f| %>
         <%= f.label :name, "ジャンル名" %>
         <%= f.text_field :name, placeholder: "ジャンル名" %>
-        <%= f.submit "新規登録",class: "btn btn-success" %>
+        <%= f.submit "新規登録",class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8 px-sm-0 mb-3 offset-sm-1">
-      <table class="table table-hover">
-        <thead class="table-secondary">
+      <table class="table">
+        <thead>
           <tr>
             <th>ジャンル</th>
             <th></th>
@@ -26,7 +26,10 @@
         <tbody>
           <tr>
             <td><%= genre.name %></td>
-            <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+            <td>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+              <%= link_to "削除する", admin_genre_path(genre.id), remote: true, method: :delete, class: "btn btn-danger" %>
+            </td>
           </tr>
         </tbody>
         <% end %>
