@@ -1,8 +1,9 @@
 class Public::ItemsController < ApplicationController
   def index
+    @item = Item.all
     @items = Item.all.page(params[:page]).per(8)
     @genres = Genre.all
-  
+
     if params[:word].present?
       if params[:range] == "Genre"
         @items = @items.joins(:genre).where("genres.name LIKE ?", "%#{params[:word]}%")
