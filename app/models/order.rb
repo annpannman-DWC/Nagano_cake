@@ -26,4 +26,5 @@ class Order < ApplicationRecord
     end
     return total
   end
+  
 end
