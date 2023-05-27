@@ -5,14 +5,21 @@
         <div>
           <%= link_to root_path do %>
             <div class="logo-container">
-              <video src="assets/Nagano.mp4" alt="Logo" autoplay loop muted>
-              </video>
+
+              <div class="mx-3">
+              <%= link_to root_path do %>
+                <div class="logo-container">
+                  <video src="/assets/Nagano.mp4" alt="Logo" autoplay loop muted></video>
+                </div>
+              <% end %>
+              </div>
+          <!--<img src="/assets/Nagano.png" alt="Logo" style="height: 140px;">-->
             </div>
           <% end %>
         </div>
       </div>
     </div>
-      <h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>
+      <!--<h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>-->
       <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
