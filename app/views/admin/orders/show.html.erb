@@ -30,7 +30,7 @@
           <td>
             <%=form_with model: @order, url:admin_order_path, method: :patch, local: false do |f| %>
               <%= f.select :order_received_status, Order.order_received_statuses_i18n.invert %>
-              <%= f.submit "更新", class: "btn btn-success" %>
+              <%= f.submit "更新", class: "btn btn-outline-warning" %>
             <% end %>
           </td>
         </tr>
