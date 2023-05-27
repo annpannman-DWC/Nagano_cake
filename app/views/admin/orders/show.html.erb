@@ -30,12 +30,14 @@
           <td>
             <%=form_with model: @order, url:admin_order_path, method: :patch, local: false do |f| %>
               <%= f.select :order_received_status, Order.order_received_statuses_i18n.invert %>
-              <%= f.submit "更新", class: "btn btn-warning" %>
+              <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
           </td>
         </tr>
       </table>
-      <table>
+    </div>
+      <div class="col-sm-8 col-md-8 col-lg-8 px-8">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th class="table-active">商品名</th>
@@ -55,14 +57,16 @@
             <td>
               <%=form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch, local: false do |f| %>
                 <%= f.select :makeing_status, OrderDetail.makeing_statuses_i18n.invert %>
-                <%= f.submit "更新", class: "btn btn-warning" %>
+                <%= f.submit "更新", class: "btn btn-outline-warning" %>
               <% end %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <table>
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
+      <table class="table table-hover">
         <tr>
           <th>商品合計</th>
           <td><%= (@order.total_price - @order.shopping_cost).to_s(:delimited, delimiter: ',') %>円</td>
@@ -76,6 +80,7 @@
           <td><%= @order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
         </tr>
       </table>
-    </div>
+      </div>
+
   </div>
 </div>
