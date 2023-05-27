@@ -36,8 +36,8 @@
               <p class="img-wrap"><%= image_tag item.get_image(200,200), fallback: "no_image.png", alt: "商品画像" %></p>
             <% end %>
             <div class="card-body">
-              <p><%= item.name %></p>
-              <p><%= (item.price*1.1).floor %>円</p>
+              <h3  style="color: RosyBrown; font-size: 17px;"><%= item.name %></h3>
+              <p  style="color: DarkRed; font-size: 15px;"><%= (item.price*1.1).floor %>円</p>
             </div>
           </div>
         <% end %>
