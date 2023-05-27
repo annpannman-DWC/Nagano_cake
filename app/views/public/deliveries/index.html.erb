@@ -55,8 +55,8 @@
             <td><%= delivery.address %></td>
             <td><%= delivery.address_name %></td>
             <td>
-              <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-outline-warning" %>
-              <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-outline-danger" %>
+              <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-warning", style: "color: cornsilk;" %>
+              <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
         <% end %>
