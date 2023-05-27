@@ -30,12 +30,12 @@
           <td>
             <%=form_with model: @order, url:admin_order_path, method: :patch, local: false do |f| %>
               <%= f.select :order_received_status, Order.order_received_statuses_i18n.invert %>
-              <%= f.submit "更新", class: "btn btn-warning" %>
+              <%= f.submit "更新", class: "btn btn-success" %>
             <% end %>
           </td>
         </tr>
       </table>
-      <table>
+      <table class="table table-hover">
         <thead>
           <tr>
             <th class="table-active">商品名</th>
@@ -55,7 +55,7 @@
             <td>
               <%=form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch, local: false do |f| %>
                 <%= f.select :makeing_status, OrderDetail.makeing_statuses_i18n.invert %>
-                <%= f.submit "更新", class: "btn btn-warning" %>
+                <%= f.submit "更新", class: "btn btn-outline-warning" %>
               <% end %>
             </td>
           </tr>
