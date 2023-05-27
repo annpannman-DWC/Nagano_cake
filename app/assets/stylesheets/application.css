@@ -37,7 +37,7 @@ body {
   }
 
   .logo-container video {
-    width: 200px; /* 画像の幅を指定 */
+    width: 150px; /* 画像の幅を指定 */
     height: auto; /* 高さを自動調整 */
   }
 
