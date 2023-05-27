@@ -1,0 +1,18 @@
+<table class="table table-ho">
+  <thead>
+    <tr>
+      <th class="active text-center">
+        <h5 class="search_genre" style="color: darkslateblue; background-color: rgba(255, 255, 240, 0.5);">ジャンル一覧</h5>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+    <tr>
+      <td class="underline" style="color: darkslateblue; background-color: rgba(255, 255, 240, 0.5);">
+        <%= genre.name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

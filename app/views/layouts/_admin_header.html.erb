@@ -1,0 +1,30 @@
+<% if admin_signed_in? %>
+  <!-- 管理者がログインしている場合のメニュー -->
+  <li class="nav-item">
+    <%= link_to admin_items_path, class: 'nav-link text-dark' do %>
+      <i class="fas fa-store"></i> 商品一覧
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
+      <i class="fas fa-users"></i> 顧客一覧
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to admin_path, class: 'nav-link text-dark' do %>
+      <i class="fas fa-file-alt"></i> 注文履歴一覧
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+      <i class="fas fa-tags"></i> ジャンル
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+      <i class="fas fa-sign-out-alt"></i> ログアウト
+    <% end %>
+  </li>
+<% else %>
+  <%= render "layouts/customer_header" %>
+<% end %>

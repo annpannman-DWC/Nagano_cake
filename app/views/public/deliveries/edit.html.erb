@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4>配送先編集</h4>
+    </div>
+    <div class="col-sm-12 px-sm-0 mx-auto mb-5">
+    <%= form_with model: @delivery, local: true do |f| %>
+      <table>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :郵便番号（ハイフンなし） %></th>
+            <th><%= f.text_field :postal_code %></th>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :住所 %></th>
+            <th><%= f.text_field :address, size: 40 %></th>
+          </div>
+        </tr>
+        <tr>
+          <div class="form group">
+            <th><%= f.label :宛名 %></th>
+            <th><%= f.text_field :address_name %></th>
+            <th><%= f.submit "変更内容を保存", class:"btn btn-warning" %></th>
+          </div>
+        </tr>
+      </table>
+    <% end %>
+      <div class="error">
+        <% if @delivery.errors.any? %>
+          <%= @delivery.errors.count %>件のエラーがあります
+          <ul>
+            <% @delivery.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

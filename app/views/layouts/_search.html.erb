@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="ml-auto">
+    <% if customer_signed_in? %>
+      <%= form_with url: search_path, local: true, method: :get, html: { class: "search-form" } do |f| %>
+        <div class="input-group">
+        <%= f.text_field :word, class: "form-control", placeholder: "キーワードを入力" %>
+        <% f.select :range, options_for_select(["Genre"]) %>
+        <% f.select :search, options_for_select(["完全一致","perfect"]) %>
+        <%= f.button class: "btn btn-primary", type: "submit" do %>検索<% end %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

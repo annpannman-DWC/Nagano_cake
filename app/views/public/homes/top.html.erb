@@ -1,45 +1,53 @@
 <div class="container">
   <div class="row">
-
-    <div class="col-md-2">
-      <h5>ジャンル検索</h5>
-      <div class="card">
-        <ul class="list-group list-group-flush">
-
-        </ul>
-      </div>
+    <div class="col-md-2 mt-5">
+      <%= render 'layouts/search_genre' %>
     </div>
 
-    <div class="carousel slide col-md-10 mt-5" data-ride="carousel" style="max-width: 100%; height: auto;">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/assets/24234001_s.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/928365_s.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/3045863_s.jpg" alt="Third slide">
+    <div class="col-md-10 mt-5 text-center">
+      <div class="carousel slide" data-ride="carousel" style="max-width: 100%; height: auto;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carousel-item active">
+              <img src="/assets/cake-d.jpg" alt="First slide" style="opacity: 0.9;">
+            </div>
+            <div class="carousel-caption text-center" style="background-color: rgba(255, 0, 80, 0.2); color: #FFFFFF;" >
+              <h3>ようこそ、ながのCAKEへ！</h3>
+              <p>このサイトは、ケーキ販売のECサイトになります。</p>
+              <p>会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-    <p class="my-4 fs-3 text-center mx-auto">ようこそ、<%= link_to "ながのCAKE", about_path %>へ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も<%= link_to "商品", items_path %>の閲覧はできますが、<br>
-      購入には<%= link_to "会員登録", new_customer_registration_path %>が必要になります。</p>
-  </div>
 
-  <div class="row">
-    <div class="my-3 mx-auto">
-      <h3>新着商品</h3>
-    </div>
-  </div>
+      <br></br>
 
+      <div class="row">
+        <div class="col-md-12 my-3">
+          <h3 style="color: brown;">新着商品</h3>
+        </div>
+      </div>
 
+      <div class="row">
+        <% @items.last(4).each do |item| %>
+          <div class="col-md-3">
+            <%= link_to item_path(item.id) do %>
+              <p class="img-wrap"><%= image_tag item.get_image(200,200), fallback: "no_image.png", alt: "商品画像" %></p>
+            <% end %>
+            <div class="card-body">
+              <h3  style="color: RosyBrown; font-size: 17px;"><%= item.name %></h3>
+              <p  style="color: DarkRed; font-size: 15px;"><%= (item.price*1.1).floor %>円</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="row">
-    <div class="col-md-11 text-right mb-3">
-      <h5><%= link_to "もっと見る>", items_path %></h5>
+      <div class="row">
+        <div class="col-md-11 text-right mb-3">
+          <h5><%= link_to "全ての商品を見る>", items_path, :style=> "color: #996633;" %></h5>
+        </div>
+      </div>
     </div>
   </div>
 </div>

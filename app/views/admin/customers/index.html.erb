@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
       <table class="table">
-        <thead class="table-secondary">
+        <thead>
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -20,7 +20,7 @@
           <tr>
             <td><%= customer.id %></td>
             <td>
-              <%= link_to admin_customer_path(customer.id) do %>
+              <%= link_to admin_customer_path(customer.id), :style=> "color: #996633;" do %>
                 <%= customer.last_name + customer.first_name %>
               <% end %>
             </td>
@@ -29,7 +29,7 @@
               <% if customer.is_deleted == false %>
                 <p class="text-success">有効</p>
               <% else %>
-                <p class="text-secondary">退会</p>
+                <p class="text-danger">退会</p>
               <% end %>
             </td>
           </tr>

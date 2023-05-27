@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-0 mb-3 offset-sm-1">
-      <p><%= @customer.last_name + @customer.first_name %>さんの会員詳細</p>
+      <h3><%= @customer.full_name %>さんの会員詳細</h3>
     </div>
   </div>
   <div class="row">
@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <th>氏名</th>
-          <td><%= @customer.last_name + @customer.first_name %></td>
+          <td><%= @customer.full_name %></td>
         </tr>
         <tr>
           <th>フリガナ</th>
@@ -41,19 +41,19 @@
             <% if @customer.is_deleted == false %>
               <p class="text-success">有効</p>
             <% else %>
-              <p class="text-secondary">退会</p>
+              <p class="text-danger">退会</p>
             <% end %>
           </td>
         </tr>
       </table>
-    </div>
-  </div>
-  <div class="row justify-content-evenly">
-    <div class="col-4">
-      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-    </div>
-    <div class="col-4">
-      <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
+      <div class="row justify-content-evenly">
+        <div class="col-4">
+          <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-warning" %>
+        </div>
+        <div class="col-4">
+          <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-warning" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

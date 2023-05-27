@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+
+/*全体の背景に適応される*/
+body {
+    background-image: url("/assets/backcolor.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+/*headerにのみ適応*/
+.header {
+    background-color: #fffafa;
+    padding: 10px;
+  }
+  .logo-container {
+    display: inline-block;
+    padding: 5px;
+  }
+  .logo-container img {
+    vertical-align: middle;
+  }
+
+  .logo-container video {
+    width: 150px; /* 画像の幅を指定 */
+    height: auto; /* 高さを自動調整 */
+  }
+
+  /*シルバーのグラデーション*/
+
+   .silver {
+  background-image: linear-gradient(to right, #C0C0C0, #F5F5F5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

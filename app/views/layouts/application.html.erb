@@ -8,69 +8,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xMEXxC2tj44ujow5JN7Y2q+v4zmdK5Ruy3XF70/4hAfY2m6tQKdnCzV8eYmN3Hzt8T46JaL9LvVM8y2DmCO2ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container">
-          <a class="navbar_brand" href="/">LOGO</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-            <% if admin_signed_in? %>
-              <li>
-                <button>商品一覧</button>
-              </li>
-              <li>
-                <button>会員一覧</button>
-              </li>
-              <li>
-                <button>注文履歴一覧</button>
-              </li>
-              <li>
-                <button>ジャンル一覧</button>
-              </li>
-              <li>
-                <button>ログアウト</button>
-              </li>
-            <% elsif customer_signed_in? %>
-              <li>
-                <button>マイページ</button>
-              </li>
-              <li>
-                <button>商品一覧</button>
-              </li>
-              <li>
-                <button>カート</button>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li>
-                <button>About</button>
-              </li>
-              <li>
-                <button>商品一覧</button>
-              </li>
-              <li>
-                <button>新規登録</button>
-              </li>
-              <li>
-                <button>ログイン</button>
-              </li>
-            <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <%= render 'layouts/header' %>
+      <br></br>
     </header>
-    <main>
-      <p id="notice"><%= notice %></p>
+    <div class="ml-5">
+      <div class="text-center mt-3"><h5><strong><%= flash[:notice] %></strong></h5></div>
+      <div class="text-center mt-3"><h5><strong><%= flash[:alert] %></strong></h5></div>
+    </div>
+    <main class="min-vh-100">
+      <div class="search">
+        <%= render "layouts/search" %>
+      </div>
       <%= yield %>
     </main>
+    <footer class="bg-dark justify-center">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

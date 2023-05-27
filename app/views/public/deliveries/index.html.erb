@@ -4,32 +4,68 @@
       <h4>配送先登録/一覧</h4>
     </div>
     <div class="col-sm-12 px-sm-0 mx-auto mb-5">
-    <%= form_with model: @delivery, url:deliveries_path, method: :post, local: true do |f| %>
+    <%= form_with model: @delivery, url: deliveries_path, method: :post, local: true do |f| %>
       <table>
         <tr>
           <div class="form-group">
-            <th><%= f.label :郵便番号（ハイフンなし） %></th>
+            <th><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></th>
             <th><%= f.text_field :postal_code, placeholder: "0000000" %></th>
           </div>
         </tr>
         <tr>
           <div class="form-group">
-            <th><%= f.label :住所 %></th>
+            <th><%= f.label :address, "住所" %></th>
             <th><%= f.text_field :address, size: 40, placeholder: "住所" %></th>
           </div>
         </tr>
         <tr>
           <div class="form group">
-            <th><%= f.label :宛名 %></th>
+            <th><%= f.label :address_name, "宛名" %></th>
             <th><%= f.text_field :address_name, placeholder: "名前" %></th>
             <th><%= f.submit "新規登録", class:"btn btn-success" %></th>
           </div>
         </tr>
       </table>
     <% end %>
+    <div class="error">
+        <% if @delivery.errors.any? %>
+          <%= @delivery.errors.count %>件のエラーがあります
+          <ul>
+            <% @delivery.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-12">
-
+    <div class="col-sm-9">
+      <table border="1">
+        <thead>
+          <tr>
+            <th class="col-xs-2 col-ms-3 col-md-2 col-lg-1">郵便番号</th>
+            <th class="col-xs-5 col-ms-3 col-md-2 col-lg-3">住所</th>
+            <th class="col-xs-2 col-ms-3 col-md-2 col-lg-1">宛名</th>
+            <th class="col-xs-4 col-ms-3 col-md-2 col-lg-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @deliveries.each do |delivery| %>
+          <tr>
+            <td><%= delivery.postal_code %></td>
+            <td><%= delivery.address %></td>
+            <td><%= delivery.address_name %></td>
+            <td>
+              <%= link_to "編集する", edit_delivery_path(delivery.id), class: "btn btn-outline-warning" %>
+              <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
+  
+  <div class="row mt-5"></div>
+  <br><br><br><br><br>
+  
 </div>
