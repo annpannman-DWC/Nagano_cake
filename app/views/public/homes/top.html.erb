@@ -9,7 +9,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="carousel-item active">
-              <img src="/assets/cake-6.jpg" alt="First slide" style="opacity: 0.9;">
+              <img src="/assets/cake-d.jpg" alt="First slide" style="opacity: 0.9;">
             </div>
             <div class="carousel-caption text-center" style="background-color: rgba(255, 0, 80, 0.2); color: #FFFFFF;" >
               <h3>ようこそ、ながのCAKEへ！</h3>
@@ -25,7 +25,7 @@
 
       <div class="row">
         <div class="col-md-12 my-3">
-          <h3>新着商品</h3>
+          <h3 style="color: brown;">新着商品</h3>
         </div>
       </div>
 
@@ -36,8 +36,8 @@
               <p class="img-wrap"><%= image_tag item.get_image(200,200), fallback: "no_image.png", alt: "商品画像" %></p>
             <% end %>
             <div class="card-body">
-              <p><%= item.name %></p>
-              <p><%= (item.price*1.1).floor %>円</p>
+              <h3  style="color: RosyBrown; font-size: 17px;"><%= item.name %></h3>
+              <p  style="color: DarkRed; font-size: 15px;"><%= (item.price*1.1).floor %>円</p>
             </div>
           </div>
         <% end %>
