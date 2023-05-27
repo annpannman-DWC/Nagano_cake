@@ -17,7 +17,7 @@
 
 /*全体の背景に適応される*/
 body {
-    background-image: url("/assets/cheesse2.jpg");
+    background-image: url("/assets/backcolor.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
