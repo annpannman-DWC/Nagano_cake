@@ -25,12 +25,6 @@ class Admin::GenresController < ApplicationController
     end
   end
 
-  def destroy
-    @genre = Genre.find(params[:id])
-    @genre.destroy
-    redirect_to request.referer
-  end
-
   def search
     # 検索条件を取得
     search_word = params[:word]

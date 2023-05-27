@@ -27,8 +27,7 @@
           <tr>
             <td><%= genre.name %></td>
             <td>
-              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-outline-warning" %>
-              <%= link_to "削除する", admin_genre_path(genre.id), remote: true, method: :delete, class: "btn btn-outline-danger" %>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-warning" %>
             </td>
           </tr>
         </tbody>
