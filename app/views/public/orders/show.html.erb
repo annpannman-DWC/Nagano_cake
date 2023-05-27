@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-sm-8 col-md-8 col-lg-8 px-8">
       <p>注文情報</p>
-      <table class="table table-bordered">
+      <table class="table table-hover table-bordered">
         <tr>
           <th class="table-active">注文日</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -30,7 +30,7 @@
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3 px-3 offset-1">
       <p>請求情報</p>
-      <table class="table table-bordered">
+      <table class="table table-hover table-bordered">
         <tr>
           <th class="table-active">送料</th>
           <td><%= @order.shopping_cost %></td>
@@ -49,7 +49,7 @@
   <div class="row">
     <div class="col-sm-8 col-md-8 col-lg-8 px-8">
       <p>注文内容</p>
-      <table class="table table-bordered">
+      <table class="table table-hover table-bordered">
         <thead>
           <tr>
             <th class="table-active" style="width:60%">商品</th>
