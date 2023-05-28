@@ -1,3 +1,24 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ .item-details {
+    border: 2px solid #333;
+    padding: 20px;
+  }
+
+  .item-details h2 {
+    color: #333;
+  }
+
+  .item-details h4 {
+    color: #666;
+  }
+
+  .item-details p {
+    margin-bottom: 10px;
+  }
+
+  .item-details h3 {
+    color: #333;
+    margin-bottom: 20px;
+  }

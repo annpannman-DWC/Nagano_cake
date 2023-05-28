@@ -26,7 +26,7 @@
             <tr>
               <td><%= item.id %></td>
               <td>
-                <%= link_to admin_item_path(item) do %>
+                <%= link_to admin_item_path(item), :style=> "color: #996633;" do %>
                   <%= item.name %>
                 <% end %>
                 </td>
