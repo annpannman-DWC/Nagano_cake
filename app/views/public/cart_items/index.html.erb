@@ -11,7 +11,7 @@
           <% end %>
         </div>
       </div>
-      <table class="table table-hover table-bordered">
+      <table class="table table-hover table-bordered" style="color: darkslateblue; background-color: rgba(245, 245, 245, 0.5);">
         <thead>
           <tr class="info">
             <th>商品名</th>
@@ -59,8 +59,8 @@
     <div class="col-md-6 mt-3">
       <table class="table table-bordered">
         <tr>
-          <td class="info"><strong>合計金額</strong></td>
-          <td><%= number_to_currency(@total_price.floor, unit: "円", format: "%n%u", precision: 0) %></td>
+          <td class="info" style="color: darkslateblue; background-color: rgba(245, 245, 245, 0.5);"><strong>合計金額</strong></td>
+          <td style="color: darkslateblue; background-color: rgba(245, 245, 245, 0.5);"><%= number_to_currency(@total_price.floor, unit: "円", format: "%n%u", precision: 0) %></td>
         </tr>
       </table>
     </div>
